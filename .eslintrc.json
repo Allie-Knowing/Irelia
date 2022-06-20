@@ -3,7 +3,13 @@
     "browser": true,
     "es2021": true
   },
-  "extends": ["airbnb", "plugin:react/recommended", "next/core-web-vitals"],
+  "extends": [
+    "airbnb",
+    "plugin:react/recommended",
+    "next/core-web-vitals",
+    "eslint:recommended",
+    "plugin:react/recommended"
+  ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
@@ -40,7 +46,11 @@
       }
     ],
     "react/jsx-props-no-spreading": "off",
-    "quotes": "off"
+    "quotes": "off",
+    "no-shadow": "off",
+    "@typescript-eslint/no-shadow": ["error"],
+    "react/react-in-jsx-scope": "off",
+    "@typescript-eslint/no-unused-vars": "error"
   },
   "plugins": [
     "react",
