@@ -1,3 +1,3 @@
-const baseURL = process.env.BASE_URL || "";
+const baseURL = process.env.NEXT_PUBLIC_BASEURL || "";
 
 export default baseURL;
