@@ -1,8 +1,5 @@
-import { request } from "@utils/request";
-
-const getUserId = async () => {
-
-}
+import request from "@utils/request";
+import { getUserId } from "./userId";
 
 interface GetUserInfoResponse {
   name: string;
@@ -14,8 +11,7 @@ interface GetUserInfoResponse {
   answer_video_cnt: number;
 }
 
-const getUserInfo = async () => {
-  return (await request.get<GetUserInfoResponse>("/info/{}")).data;
+export const getUserInfo = () => {
+  const userId = getUserId();
+  request.get<GetUserInfoResponse>(`/info/${userId}`);
 };
-
-export { getUserInfo };
