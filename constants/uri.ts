@@ -1,6 +1,6 @@
 const enum uri {
   refresh = "/refresh",
-  userInfo = "/info",
+  userInfo = "/user/info",
   userId = "/user/my",
 }
 
