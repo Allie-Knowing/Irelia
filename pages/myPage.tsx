@@ -14,6 +14,7 @@ const Container = styled.section`
 const VideoLayout = styled.div`
   background-color: #ffffff;
   width: 100%;
+  height: 100%;
 `;
 
 const MyPageContainer: FC = () => {
