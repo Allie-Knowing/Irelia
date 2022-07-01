@@ -1,3 +1,4 @@
+import uri from "@constants/uri";
 import request from "@utils/request";
 import { getUserId } from "./userId";
 
@@ -11,7 +12,15 @@ interface GetUserInfoResponse {
   answer_video_cnt: number;
 }
 
-export const getUserInfo = () => {
-  const userId = getUserId();
-  request.get<GetUserInfoResponse>(`/info/${userId}`);
+export const getUserInfo = async (userId: number) => {
+  const data = await request.get<GetUserInfoResponse>(
+    `${uri.userInfo}/${userId}`,
+  );
+
+  return data;
+};
+
+export const getMyInfo = async () => {
+  const userId = await getUserId();
+  return getUserInfo(userId.data.data);
 };
