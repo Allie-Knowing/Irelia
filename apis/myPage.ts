@@ -1,5 +1,9 @@
 import { request } from "@utils/request";
 
+const getUserId = async () => {
+
+}
+
 interface GetUserInfoResponse {
   name: string;
   profile: string;
@@ -10,6 +14,8 @@ interface GetUserInfoResponse {
   answer_video_cnt: number;
 }
 
-const getUserInfo = async () => await request.get<GetUserInfoResponse>("/info/{}")
+const getUserInfo = async () => {
+  return (await request.get<GetUserInfoResponse>("/info/{}")).data;
+};
 
 export { getUserInfo };
