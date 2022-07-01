@@ -22,14 +22,16 @@
       "@apis": ["apis/index.ts"],
       "@components/*": ["components/*"],
       "@components": ["components/index.ts"],
-      "@shared/*": ["constants/*"],
-      "@shared": ["constants/index.ts"],
+      "@constants/*": ["constants/*"],
+      "@constants": ["constants/index.ts"],
       "@assets/*": ["assets/*"],
       "@assets": ["assets/index.ts"],
       "@icons/*": ["assets/icons/*"],
       "@icons": ["assets/icons/index.ts"],
       "@images/*": ["assets/images/*"],
-      "@images": ["assets/images/index.ts"]
+      "@images": ["assets/images/index.ts"],
+      "@types/*": ["@types/*"],
+      "@types": ["@types/index.ts"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
