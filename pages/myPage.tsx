@@ -1,7 +1,8 @@
-import { getMyInfo } from "@apis";
-import queryKey from "@constants/queryKey";
-import { FC, useEffect } from "react";
-import { useQuery } from "react-query";
+// import { getMyInfo } from "@apis";
+// import queryKey from "@constants/queryKey";
+// import { useQuery } from "react-query";
+// import { FC, useEffect } from "react";
+import { FC } from "react";
 import * as S from "@views";
 import styled from "@emotion/styled";
 
@@ -18,13 +19,16 @@ const VideoLayout = styled.div`
 `;
 
 const MyPageContainer: FC = () => {
-  const { data, isLoading, isError } = useQuery([queryKey.myInfo], getMyInfo);
+  const a = 1;
+  console.log(a);
 
-  useEffect(() => {
-    console.log(data);
-    console.log(isLoading);
-    console.log(isError);
-  }, [data, isError, isLoading]);
+  // const { data, isLoading, isError } = useQuery([queryKey.myInfo], getMyInfo);
+
+  // useEffect(() => {
+  //   console.log(data);
+  //   console.log(isLoading);
+  //   console.log(isError);
+  // }, [data, isError, isLoading]);
 
   return (
     <Container>
