@@ -51,7 +51,10 @@
     "@typescript-eslint/no-shadow": ["error"],
     "react/react-in-jsx-scope": "off",
     "@typescript-eslint/no-unused-vars": "error",
-    "no-unused-vars": "off"
+    "no-unused-vars": "off",
+    "implicit-arrow-linebreak": "off",
+    "import/no-cycle": "off",
+    "no-param-reassign": "off"
   },
   "plugins": [
     "react",
