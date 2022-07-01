@@ -2,6 +2,14 @@ import { getMyInfo } from "@apis";
 import queryKey from "@constants/queryKey";
 import { FC, useEffect } from "react";
 import { useQuery } from "react-query";
+import * as S from "@views";
+import styled from "@emotion/styled";
+
+const Container = styled.section`
+  width: 100vw;
+  height: 100vh;
+  background-color: #f3f2f7;
+`;
 
 const MyPageContainer: FC = () => {
   const { data, isLoading, isError } = useQuery([queryKey.myInfo], getMyInfo);
@@ -13,9 +21,9 @@ const MyPageContainer: FC = () => {
   }, [data, isError, isLoading]);
 
   return (
-    <div>
-      <div>dd</div>
-    </div>
+    <Container>
+      <S.UserInfo />
+    </Container>
   );
 };
 
