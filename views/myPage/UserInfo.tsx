@@ -4,7 +4,7 @@ import styled from "@emotion/styled";
 const Container = styled.section`
   width: 100vw;
   height: 14%;
-  background-color: white;
+  background-color: #ffffff;
 `;
 
 const Outer = styled.div`

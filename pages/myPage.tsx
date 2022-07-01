@@ -11,6 +11,11 @@ const Container = styled.section`
   background-color: #f3f2f7;
 `;
 
+const VideoLayout = styled.div`
+  background-color: #ffffff;
+  width: 100%;
+`;
+
 const MyPageContainer: FC = () => {
   const { data, isLoading, isError } = useQuery([queryKey.myInfo], getMyInfo);
 
@@ -23,6 +28,10 @@ const MyPageContainer: FC = () => {
   return (
     <Container>
       <S.UserInfo />
+      <VideoLayout>
+        <S.ToggleButton />
+        <S.VideoItem />
+      </VideoLayout>
     </Container>
   );
 };
