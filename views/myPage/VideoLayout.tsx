@@ -4,6 +4,7 @@ import VideoItem from "./VideoItem";
 
 const Container = styled.section`
   width: 100vw;
+  height: 100%;
   display: flex;
   justify-content: center;
   margin-top: 2.5%;
@@ -26,6 +27,7 @@ const VideoContainer = styled.div`
   flex-flow: row wrap;
   height: 56%;
   overflow-y: scroll;
+  overflow-x: hidden;
 `;
 
 const VideoLayout: FC = () => {
