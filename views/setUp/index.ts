@@ -1,1 +1,1 @@
-export { default as Set } from "./Set";
+export { default as SetItem } from "./SetItem";
