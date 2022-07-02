@@ -12,7 +12,7 @@ const Container = styled.section`
   background-color: #f3f2f7;
 `;
 
-const VideoLayout = styled.div`
+const Outer = styled.div`
   background-color: #ffffff;
   width: 100%;
   height: 100%;
@@ -33,10 +33,10 @@ const MyPageContainer: FC = () => {
   return (
     <Container>
       <S.UserInfo />
-      <VideoLayout>
+      <Outer>
         <S.ToggleButton />
-        <S.VideoItem />
-      </VideoLayout>
+        <S.VideoLayout />
+      </Outer>
     </Container>
   );
 };
