@@ -28,6 +28,7 @@ const Text = styled.p<{ toggled: boolean }>`
   font-size: 16px;
   position: relative;
   z-index: 2;
+  transition: color 0.4s;
   ${(props) =>
   (props.toggled
     ? css`
@@ -48,7 +49,12 @@ const SelectToggle = styled.div<{ isQuestion: boolean }>`
   transform: translate(-50%, -50%);
   border-radius: 10px;
   z-index: 1;
-  ${(props) => (props.isQuestion ? css`` : css``)}
+  transition: transform 0.4s;
+  ${(props) =>
+    props.isQuestion ||
+    css`
+      transform: translate(60%, -50%);
+    `}
 `;
 
 const ToggleButton: FC = () => {
@@ -66,7 +72,7 @@ const ToggleButton: FC = () => {
     <Container>
       <Outer>
         <Toggle onClick={onToggleChange}>
-          <SelectToggle />
+          <SelectToggle isQuestion={isQuestion} />
           <Text toggled={isQuestion}>나의 질문</Text>
         </Toggle>
         <Toggle onClick={onToggleChange}>
