@@ -1,5 +1,6 @@
 import { FC } from "react";
 import styled from "@emotion/styled";
+import { ForTest } from "@images";
 
 const Container = styled.section`
   width: 100vw;
@@ -38,12 +39,17 @@ const Name = styled.p`
 
 const ProfileImage = styled.img`
   border-radius: 50%;
+  /* width: 18%;
+  height: 73%; */
+  width: 65px;
+  height: 65px;
+  object-fit: cover;
 `;
 
 const UserInfo: FC = () => (
   <Container>
     <Outer>
-      <ProfileImage src="" alt="profile image" />
+      <ProfileImage src={ForTest.src} alt="profile image" />
       <Inner>
         <Name>name</Name>
         <FollowContainer>
