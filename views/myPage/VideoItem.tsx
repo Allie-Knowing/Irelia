@@ -8,6 +8,12 @@ const Container = styled.section`
   width: calc(100% / 2.1);
   height: 60%;
   position: relative;
+  &:active {
+    & .activeBackground {
+      visibility: visible;
+    }
+  }
+  z-index: 1;
 `;
 
 const Thumbnail = styled(Image)`
@@ -25,7 +31,6 @@ const VideoNavigation = styled.div`
   opacity: 0.4;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
-  z-index: 1;
 `;
 
 const Outer = styled.div`
@@ -49,6 +54,16 @@ const Text = styled.p`
   color: #ffffff;
 `;
 
+const ActiveBackground = styled.div`
+  position: relative;
+  background-color: #ffffff;
+  opacity: 0.4;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  visibility: hidden;
+`;
+
 const VideoItem: FC = () => (
   <Container>
     <Thumbnail src={ForTest.src} alt="thumbnail" layout="fill" />
@@ -64,6 +79,7 @@ const VideoItem: FC = () => (
         </Inner>
       </Outer>
     </VideoNavigation>
+    <ActiveBackground className="activeBackground" />
   </Container>
 );
 
