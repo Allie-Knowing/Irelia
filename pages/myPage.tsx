@@ -10,6 +10,7 @@ const Container = styled.section`
   width: 100vw;
   height: 100vh;
   background-color: #f3f2f7;
+  overflow-y: hidden;
 `;
 
 const Outer = styled.div`

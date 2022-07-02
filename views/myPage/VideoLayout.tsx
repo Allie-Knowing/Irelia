@@ -21,8 +21,10 @@ const Text = styled.p`
 const VideoContainer = styled.div`
   margin-top: 2.5%;
   display: flex;
-  /* column-gap: 13%; */
+  column-gap: 3%;
+  row-gap: 3%;
   flex-flow: row wrap;
+  height: 56%;
   overflow-y: scroll;
 `;
 
