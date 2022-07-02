@@ -3,7 +3,7 @@
 // import { useQuery } from "react-query";
 // import { FC, useEffect } from "react";
 import { FC } from "react";
-import * as S from "@views";
+import { myPageStyle } from "@views";
 import styled from "@emotion/styled";
 
 const Container = styled.section`
@@ -33,10 +33,10 @@ const MyPageContainer: FC = () => {
 
   return (
     <Container>
-      <S.UserInfo />
+      <myPageStyle.UserInfo />
       <Outer>
-        <S.ToggleButton />
-        <S.VideoLayout />
+        <myPageStyle.ToggleButton />
+        <myPageStyle.VideoLayout />
       </Outer>
     </Container>
   );
