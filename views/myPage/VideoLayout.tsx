@@ -19,7 +19,11 @@ const Text = styled.p`
 `;
 
 const VideoContainer = styled.div`
-    margin-top: 2.5%;
+  margin-top: 2.5%;
+  display: flex;
+  /* column-gap: 13%; */
+  flex-flow: row wrap;
+  overflow-y: scroll;
 `;
 
 const VideoLayout: FC = () => {
@@ -30,6 +34,8 @@ const VideoLayout: FC = () => {
       <Outer>
         <Text>내가 올린 질문 {a}개</Text>
         <VideoContainer>
+          <VideoItem />
+          <VideoItem />
           <VideoItem />
           <VideoItem />
           <VideoItem />

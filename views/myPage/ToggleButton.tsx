@@ -61,21 +61,28 @@ const ToggleButton: FC = () => {
   const [isQuestion, setIsQuestion] = useState<boolean>(true);
   const [isAnswer, setIsAnswer] = useState<boolean>(false);
 
-  const onToggleChange = () => {
+  const onQuestion = () => {
     // eslint-disable-next-line @typescript-eslint/no-shadow
-    setIsQuestion((isQuestion) => !isQuestion);
+    setIsQuestion(true);
     // eslint-disable-next-line @typescript-eslint/no-shadow
-    setIsAnswer((isAnswer) => !isAnswer);
+    setIsAnswer(false);
+  };
+
+  const onAnswer = () => {
+    // eslint-disable-next-line @typescript-eslint/no-shadow
+    setIsQuestion(false);
+    // eslint-disable-next-line @typescript-eslint/no-shadow
+    setIsAnswer(true);
   };
 
   return (
     <Container>
       <Outer>
-        <Toggle onClick={onToggleChange}>
+        <Toggle onClick={onQuestion}>
           <SelectToggle isQuestion={isQuestion} />
           <Text toggled={isQuestion}>나의 질문</Text>
         </Toggle>
-        <Toggle onClick={onToggleChange}>
+        <Toggle onClick={onAnswer}>
           <Text toggled={isAnswer}>나의 답변</Text>
         </Toggle>
       </Outer>
