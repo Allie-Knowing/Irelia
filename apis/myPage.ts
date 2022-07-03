@@ -1,6 +1,6 @@
 import uri from "@constants/uri";
 import request from "@utils/request";
-import { getUserId } from "./userId";
+import { getUserId } from "@apis";
 
 interface GetUserInfoResponse {
   name: string;

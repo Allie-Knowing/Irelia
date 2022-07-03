@@ -1,6 +1,6 @@
 import { FC } from "react";
 import styled from "@emotion/styled";
-import VideoItem from "./VideoItem";
+import { VideoItem } from "@views/myPage";
 
 const Container = styled.section`
   width: 100vw;
