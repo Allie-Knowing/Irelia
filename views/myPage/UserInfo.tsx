@@ -15,10 +15,8 @@ const UserInfo: FC = () => (
       <Inner>
         <Name>name</Name>
         <FollowContainer>
-          <Follow>팔로워</Follow>
-          <Follow>0</Follow>
-          <Follow>팔로잉</Follow>
-          <Follow>0</Follow>
+          <Follow>팔로워 0</Follow>
+          <Follow>팔로잉 0</Follow>
         </FollowContainer>
       </Inner>
     </Outer>
@@ -28,9 +26,8 @@ const UserInfo: FC = () => (
 export default UserInfo;
 
 const Container = styled.section`
-  width: 100vw;
-  height: 14%;
-  background-color: #ffffff;
+  background-color: ${({ theme }) => theme.colors.grayscale.scale10};
+  padding: 16px 20px;
 `;
 
 const Outer = styled.div`
@@ -38,19 +35,18 @@ const Outer = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  padding-left: 6%;
 `;
 
 const Inner = styled.div`
   display: flex;
   flex-direction: column;
-  padding-left: 6%;
+  padding-left: 16px;
 `;
 
 const FollowContainer = styled.div`
   display: flex;
   flex-direction: row;
-  column-gap: 2%;
+  column-gap: 8px;
 `;
 
 const Follow = styled.p`

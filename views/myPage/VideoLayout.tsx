@@ -7,46 +7,35 @@ const VideoLayout: FC = () => {
 
   return (
     <Container>
-      <Outer>
-        <Text>내가 올린 질문 {a}개</Text>
-        <VideoContainer>
-          <VideoItem />
-          <VideoItem />
-          <VideoItem />
-          <VideoItem />
-          <VideoItem />
-        </VideoContainer>
-      </Outer>
+      <Text>
+        내가 올린 질문 {a}개
+      </Text>
+      <VideoContainer>
+        <VideoItem />
+        <VideoItem />
+        <VideoItem />
+        <VideoItem />
+        <VideoItem />
+      </VideoContainer>
     </Container>
   );
 };
 
 export default VideoLayout;
 
-const Container = styled.section`
-  width: 100vw;
+const Container = styled.div`
+  padding: 0px 20px 20px;
   height: 100%;
-  display: flex;
-  justify-content: center;
-  margin-top: 2.5%;
-`;
-
-const Outer = styled.div`
-  width: 90%;
 `;
 
 const Text = styled.p`
-  font-size: 14px;
-  color: #17171c;
+  color: ${({ theme }) => theme.colors.grayscale.scale100};
+  font: ${({ theme }) => theme.fonts.body3};
 `;
 
 const VideoContainer = styled.div`
-  margin-top: 2.5%;
-  display: flex;
-  column-gap: 3%;
-  row-gap: 3%;
-  flex-flow: row wrap;
-  height: 56%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
   overflow-y: scroll;
-  overflow-x: hidden;
 `;

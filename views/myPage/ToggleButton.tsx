@@ -1,93 +1,108 @@
-import { FC, useState } from "react";
+import { FC, useCallback, useEffect, useRef, useState } from "react";
 import styled from "@emotion/styled";
-import { css } from "@emotion/react";
+import { useTheme } from "@emotion/react";
 
-const ToggleButton: FC = () => {
-  const [isQuestion, setIsQuestion] = useState<boolean>(true);
-  const [isAnswer, setIsAnswer] = useState<boolean>(false);
+interface Button {
+  text: string;
+  name: string;
+  onClick: () => void;
+}
 
-  const onQuestion = () => {
-    // eslint-disable-next-line @typescript-eslint/no-shadow
-    setIsQuestion(true);
-    // eslint-disable-next-line @typescript-eslint/no-shadow
-    setIsAnswer(false);
-  };
+interface PropsType {
+  buttons: Button[];
+  initalName: string;
+}
 
-  const onAnswer = () => {
-    // eslint-disable-next-line @typescript-eslint/no-shadow
-    setIsQuestion(false);
-    // eslint-disable-next-line @typescript-eslint/no-shadow
-    setIsAnswer(true);
-  };
+const ToggleButton: FC<PropsType> = (props) => {
+  const { buttons, initalName } = props;
+  const theme = useTheme();
+  const [active, setActive] = useState<number>(
+    buttons.findIndex((v) => v.name === initalName),
+  );
+  const itemRefs = useRef<HTMLButtonElement[]>([]);
+  const [width, setWidth] = useState<null | number>(null);
+  const [height, setHeight] = useState<null | number>(null);
+  const [left, setLeft] = useState<null | number>(null);
+
+  const onActiveChange = useCallback(() => {
+    const item = itemRefs.current[active];
+
+    if (!item) {
+      return;
+    }
+
+    const { width: w, height: h } = item.getBoundingClientRect();
+    const l = item.offsetLeft;
+
+    setWidth(w);
+    setHeight(h);
+    setLeft(l);
+  }, [active]);
+
+  useEffect(() => {
+    onActiveChange();
+  }, [onActiveChange]);
 
   return (
-    <Container>
-      <Outer>
-        <Toggle onClick={onQuestion}>
-          <SelectToggle isQuestion={isQuestion} />
-          <Text toggled={isQuestion}>나의 질문</Text>
-        </Toggle>
-        <Toggle onClick={onAnswer}>
-          <Text toggled={isAnswer}>나의 답변</Text>
-        </Toggle>
-      </Outer>
-    </Container>
+    <Wrapper>
+      <Container>
+        {width !== null && height !== null && left !== null && (
+          <Back style={{ width, height, left }} />
+        )}
+        {buttons.map((value, index) => (
+          <Toggle
+            ref={(r) => {
+              if (r) {
+                itemRefs.current[index] = r;
+              }
+            }}
+            onClick={() => {
+              setActive(index);
+              value.onClick();
+            }}
+            style={{
+              color:
+                active === index
+                  ? theme.colors.grayscale.scale10
+                  : theme.colors.grayscale.scale50,
+            }}
+            key={value.name}
+          >
+            {value.text}
+          </Toggle>
+        ))}
+      </Container>
+    </Wrapper>
   );
 };
 
 export default ToggleButton;
 
-const Container = styled.section`
-  width: 100vw;
-  height: 5.7%;
-  display: flex;
-  justify-content: center;
+const Wrapper = styled.div`
+  padding: 20px;
 `;
 
-const Outer = styled.div`
-  width: 90%;
-  height: 100%;
-  background-color: #eeedf2;
+const Container = styled.div`
+  width: 100%;
+  display: flex;
+  position: relative;
+  background-color: ${({ theme }) => theme.colors.grayscale.scale20};
+  padding: 4px;
   border-radius: 10px;
 `;
 
 const Toggle = styled.button`
-  border: none;
-  width: 50%;
-  height: 100%;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
-  padding: 4px;
+  padding: 4px 0px;
 `;
 
-const Text = styled.p<{ toggled: boolean }>`
-  font-size: 16px;
-  position: relative;
-  z-index: 2;
-  transition: color 0.4s;
-  ${(props) =>
-  (props.toggled
-    ? css`
-          color: #ffffff;
-        `
-    : css`
-          color: #97979c;
-        `)}
-`;
-
-const SelectToggle = styled.div<{ isQuestion: boolean }>`
-  width: 90%;
-  height: 80%;
-  background-color: #7366ef;
+const Back = styled.div`
+  background-color: ${({ theme }) => theme.colors.primary.default};
+  transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
   position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
   border-radius: 10px;
-  z-index: 1;
-  transition: transform 0.4s;
-  ${(props) =>
-    props.isQuestion ||
-    css`
-      transform: translate(60%, -50%);
-    `}
 `;

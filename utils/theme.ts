@@ -40,16 +40,16 @@ interface Color {
 }
 
 const fonts: Font = {
-  h1: "normal normal 32px 'SpoqaHanSansNeo-Bold';",
-  h2: "normal normal 28px 'SpoqaHanSansNeo-Bold';",
-  h3: "normal normal 24px 'SpoqaHanSansNeo-Bold';",
-  subtitle1: "normal normal bold 20px 'SpoqaHanSansNeo-Medium';",
-  subtitle2: "normal normal 500 20px 'SpoqaHanSansNeo-Medium';",
-  body1: "normal normal bold 16px 'SpoqaHanSansNeo-Bold';",
-  body2: "normal normal 500 16px 'SpoqaHanSansNeo-Medium';",
-  body3: "normal normal 400 16px 'SpoqaHanSansNeo-Regular';",
-  description1: "normal normal 400 14px 'SpoqaHanSansNeo-Regular';",
-  description2: "normal normal 400 12px 'SpoqaHanSansNeo-Regular';",
+  h1: "normal normal bold 32px 'Spoqa Han Sans Neo';",
+  h2: "normal normal bold 28px 'Spoqa Han Sans Neo';",
+  h3: "normal normal bold 24px 'Spoqa Han Sans Neo';",
+  subtitle1: "normal normal bold 20px 'Spoqa Han Sans Neo';",
+  subtitle2: "normal normal 500 20px 'Spoqa Han Sans Neo';",
+  body1: "normal normal bold 16px 'Spoqa Han Sans Neo';",
+  body2: "normal normal 500 16px 'Spoqa Han Sans Neo';",
+  body3: "normal normal 400 16px 'Spoqa Han Sans Neo';",
+  description1: "normal normal 400 14px 'Spoqa Han Sans Neo';",
+  description2: "normal normal 400 12px 'Spoqa Han Sans Neo';",
 };
 
 export interface Theme {

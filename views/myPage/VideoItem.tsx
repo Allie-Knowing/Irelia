@@ -14,7 +14,7 @@ const VideoItem: FC = () => (
           <Text>13만</Text>
         </Inner>
         <Inner>
-          <Image src={likeIcon} alt="like icon" width={10} height={10} />
+          <Image src={likeIcon} alt="like icon" width={12} height={10} />
           <Text>123만</Text>
         </Inner>
       </Outer>
@@ -25,9 +25,10 @@ const VideoItem: FC = () => (
 
 export default VideoItem;
 
-const Container = styled.section`
-  width: calc(100% / 2.1);
-  height: 60%;
+const Container = styled.div`
+  flex: 1;
+  aspect-ratio: 1/ 1.56;
+
   position: relative;
   &:active {
     & .activeBackground {
