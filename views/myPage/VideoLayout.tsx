@@ -25,7 +25,6 @@ export default VideoLayout;
 
 const Container = styled.div`
   padding: 0px 20px 20px;
-  height: 100%;
 `;
 
 const Text = styled.p`
@@ -37,5 +36,4 @@ const VideoContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
-  overflow-y: scroll;
 `;
