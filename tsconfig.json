@@ -31,7 +31,9 @@
       "@images/*": ["assets/images/*"],
       "@images": ["assets/images/index.ts"],
       "@types/*": ["@types/*"],
-      "@types": ["@types/index.ts"]
+      "@types": ["@types/index.ts"],
+      "@views/*": ["views/*"],
+      "@views": ["views/index.ts"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
