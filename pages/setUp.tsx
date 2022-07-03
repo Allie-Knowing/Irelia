@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { setUpStyle } from "@views";
+import { SetItem } from "@views/setUp";
 import styled from "@emotion/styled";
 
 const Container = styled.section`
@@ -58,7 +58,7 @@ const SetUpContainer: FC = () => {
     <Container>
       <Outer>
         {SETTING_MAP.map((set) => (
-          <setUpStyle.SetItem
+          <SetItem
             key={set.id}
             text={set.text}
             color={set.color}
