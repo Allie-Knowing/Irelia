@@ -2,6 +2,41 @@ import { FC, useState } from "react";
 import styled from "@emotion/styled";
 import { css } from "@emotion/react";
 
+const ToggleButton: FC = () => {
+  const [isQuestion, setIsQuestion] = useState<boolean>(true);
+  const [isAnswer, setIsAnswer] = useState<boolean>(false);
+
+  const onQuestion = () => {
+    // eslint-disable-next-line @typescript-eslint/no-shadow
+    setIsQuestion(true);
+    // eslint-disable-next-line @typescript-eslint/no-shadow
+    setIsAnswer(false);
+  };
+
+  const onAnswer = () => {
+    // eslint-disable-next-line @typescript-eslint/no-shadow
+    setIsQuestion(false);
+    // eslint-disable-next-line @typescript-eslint/no-shadow
+    setIsAnswer(true);
+  };
+
+  return (
+    <Container>
+      <Outer>
+        <Toggle onClick={onQuestion}>
+          <SelectToggle isQuestion={isQuestion} />
+          <Text toggled={isQuestion}>나의 질문</Text>
+        </Toggle>
+        <Toggle onClick={onAnswer}>
+          <Text toggled={isAnswer}>나의 답변</Text>
+        </Toggle>
+      </Outer>
+    </Container>
+  );
+};
+
+export default ToggleButton;
+
 const Container = styled.section`
   width: 100vw;
   height: 5.7%;
@@ -56,38 +91,3 @@ const SelectToggle = styled.div<{ isQuestion: boolean }>`
       transform: translate(60%, -50%);
     `}
 `;
-
-const ToggleButton: FC = () => {
-  const [isQuestion, setIsQuestion] = useState<boolean>(true);
-  const [isAnswer, setIsAnswer] = useState<boolean>(false);
-
-  const onQuestion = () => {
-    // eslint-disable-next-line @typescript-eslint/no-shadow
-    setIsQuestion(true);
-    // eslint-disable-next-line @typescript-eslint/no-shadow
-    setIsAnswer(false);
-  };
-
-  const onAnswer = () => {
-    // eslint-disable-next-line @typescript-eslint/no-shadow
-    setIsQuestion(false);
-    // eslint-disable-next-line @typescript-eslint/no-shadow
-    setIsAnswer(true);
-  };
-
-  return (
-    <Container>
-      <Outer>
-        <Toggle onClick={onQuestion}>
-          <SelectToggle isQuestion={isQuestion} />
-          <Text toggled={isQuestion}>나의 질문</Text>
-        </Toggle>
-        <Toggle onClick={onAnswer}>
-          <Text toggled={isAnswer}>나의 답변</Text>
-        </Toggle>
-      </Outer>
-    </Container>
-  );
-};
-
-export default ToggleButton;
