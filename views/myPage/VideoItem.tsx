@@ -4,6 +4,27 @@ import { ForTest } from "@images";
 import { playIcon, likeIcon } from "@icons";
 import Image from "next/image";
 
+const VideoItem: FC = () => (
+  <Container>
+    <Thumbnail src={ForTest.src} alt="thumbnail" layout="fill" />
+    <VideoNavigation>
+      <Outer>
+        <Inner>
+          <Image src={playIcon} alt="play icon" width={10} height={10} />
+          <Text>13만</Text>
+        </Inner>
+        <Inner>
+          <Image src={likeIcon} alt="like icon" width={10} height={10} />
+          <Text>123만</Text>
+        </Inner>
+      </Outer>
+    </VideoNavigation>
+    <ActiveBackground className="activeBackground" />
+  </Container>
+);
+
+export default VideoItem;
+
 const Container = styled.section`
   width: calc(100% / 2.1);
   height: 60%;
@@ -63,24 +84,3 @@ const ActiveBackground = styled.div`
   height: 100%;
   visibility: hidden;
 `;
-
-const VideoItem: FC = () => (
-  <Container>
-    <Thumbnail src={ForTest.src} alt="thumbnail" layout="fill" />
-    <VideoNavigation>
-      <Outer>
-        <Inner>
-          <Image src={playIcon} alt="play icon" width={10} height={10} />
-          <Text>13만</Text>
-        </Inner>
-        <Inner>
-          <Image src={likeIcon} alt="like icon" width={10} height={10} />
-          <Text>123만</Text>
-        </Inner>
-      </Outer>
-    </VideoNavigation>
-    <ActiveBackground className="activeBackground" />
-  </Container>
-);
-
-export default VideoItem;

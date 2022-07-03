@@ -2,6 +2,27 @@ import { FC } from "react";
 import styled from "@emotion/styled";
 import { VideoItem } from "@views/myPage";
 
+const VideoLayout: FC = () => {
+  const a = 1;
+
+  return (
+    <Container>
+      <Outer>
+        <Text>내가 올린 질문 {a}개</Text>
+        <VideoContainer>
+          <VideoItem />
+          <VideoItem />
+          <VideoItem />
+          <VideoItem />
+          <VideoItem />
+        </VideoContainer>
+      </Outer>
+    </Container>
+  );
+};
+
+export default VideoLayout;
+
 const Container = styled.section`
   width: 100vw;
   height: 100%;
@@ -29,24 +50,3 @@ const VideoContainer = styled.div`
   overflow-y: scroll;
   overflow-x: hidden;
 `;
-
-const VideoLayout: FC = () => {
-  const a = 1;
-
-  return (
-    <Container>
-      <Outer>
-        <Text>내가 올린 질문 {a}개</Text>
-        <VideoContainer>
-          <VideoItem />
-          <VideoItem />
-          <VideoItem />
-          <VideoItem />
-          <VideoItem />
-        </VideoContainer>
-      </Outer>
-    </Container>
-  );
-};
-
-export default VideoLayout;

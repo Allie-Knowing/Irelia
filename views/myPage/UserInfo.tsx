@@ -3,6 +3,30 @@ import styled from "@emotion/styled";
 import { ForTest } from "@images";
 import Image from "next/image";
 
+const UserInfo: FC = () => (
+  <Container>
+    <Outer>
+      <ProfileImage
+        src={ForTest.src}
+        alt="profile image"
+        width={65}
+        height={65}
+      />
+      <Inner>
+        <Name>name</Name>
+        <FollowContainer>
+          <Follow>팔로워</Follow>
+          <Follow>0</Follow>
+          <Follow>팔로잉</Follow>
+          <Follow>0</Follow>
+        </FollowContainer>
+      </Inner>
+    </Outer>
+  </Container>
+);
+
+export default UserInfo;
+
 const Container = styled.section`
   width: 100vw;
   height: 14%;
@@ -42,27 +66,3 @@ const ProfileImage = styled(Image)`
   border-radius: 50%;
   object-fit: cover;
 `;
-
-const UserInfo: FC = () => (
-  <Container>
-    <Outer>
-      <ProfileImage
-        src={ForTest.src}
-        alt="profile image"
-        width={65}
-        height={65}
-      />
-      <Inner>
-        <Name>name</Name>
-        <FollowContainer>
-          <Follow>팔로워</Follow>
-          <Follow>0</Follow>
-          <Follow>팔로잉</Follow>
-          <Follow>0</Follow>
-        </FollowContainer>
-      </Inner>
-    </Outer>
-  </Container>
-);
-
-export default UserInfo;

@@ -2,19 +2,6 @@ import { FC } from "react";
 import * as S from "@views";
 import styled from "@emotion/styled";
 
-const Container = styled.section`
-  width: 100vw;
-  height: 100vh;
-  background-color: #f3f2f7;
-  overflow-y: hidden;
-`;
-
-const Outer = styled.div`
-  background-color: #ffffff;
-  width: 100%;
-  height: 100%;
-`;
-
 const MyPageContainer: FC = () => {
   const a = 1;
   console.log(a);
@@ -31,3 +18,16 @@ const MyPageContainer: FC = () => {
 };
 
 export default MyPageContainer;
+
+const Container = styled.section`
+  width: 100vw;
+  height: 100vh;
+  background-color: #f3f2f7;
+  overflow-y: hidden;
+`;
+
+const Outer = styled.div`
+  background-color: #ffffff;
+  width: 100%;
+  height: 100%;
+`;
