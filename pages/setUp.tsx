@@ -2,18 +2,6 @@ import { FC } from "react";
 import { SetItem } from "@views/setUp";
 import styled from "@emotion/styled";
 
-const Container = styled.section`
-  width: 100vw;
-  height: 100vh;
-  background-color: #f3f2f7;
-`;
-
-const Outer = styled.div`
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-`;
-
 const SetUpContainer: FC = () => {
   const editProfile = () => {};
   const editInterests = () => {};
@@ -71,3 +59,14 @@ const SetUpContainer: FC = () => {
 };
 
 export default SetUpContainer;
+
+const Container = styled.section`
+  width: 100vw;
+  height: 100vh;
+  background-color: #f3f2f7;
+`;
+
+const Outer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
