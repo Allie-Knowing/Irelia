@@ -6,6 +6,10 @@ const Container = styled.section`
   width: 100vw;
   height: 8.2%;
   background-color: #ffffff;
+
+  &:active {
+    opacity: 0.8;
+  }
 `;
 
 const Inner = styled.div`
