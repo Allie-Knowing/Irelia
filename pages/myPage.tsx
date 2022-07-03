@@ -1,18 +1,18 @@
 import { FC } from "react";
-import * as S from "@views";
+import { ToggleButton, UserInfo, VideoLayout } from "@views/myPage";
 import styled from "@emotion/styled";
 
 const MyPageContainer: FC = () => (
   <Container>
-    <S.UserInfo />
-    <S.ToggleButton
+    <UserInfo />
+    <ToggleButton
       buttons={[
         { name: "question-list", onClick: () => {}, text: "나의 질문" },
         { name: "answer-list", onClick: () => {}, text: "나의 답변" },
       ]}
       initalName="question-list"
     />
-    <S.VideoLayout />
+    <VideoLayout />
   </Container>
 );
 

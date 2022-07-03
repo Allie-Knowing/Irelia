@@ -33,6 +33,7 @@ const Text = styled.p`
 `;
 
 const VideoContainer = styled.div`
+  margin-top: 15px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
