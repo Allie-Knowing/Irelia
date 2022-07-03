@@ -1,5 +1,19 @@
-import { FC, useEffect } from "react";
+import { FC } from "react";
 import styled from "@emotion/styled";
+
+const Container = styled.section`
+  margin-top: 3%;
+  width: 100vw;
+  height: 8.2%;
+  background-color: #ffffff;
+`;
+
+const Inner = styled.div`
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding-left: 5.5%;
+`;
 
 const Text = styled.div<{ color: string }>`
   color: ${(props) => props.color};
@@ -8,22 +22,16 @@ const Text = styled.div<{ color: string }>`
 
 interface PropsType {
   text: string;
-  func: () => void;
   color: string;
+  onClickFunction: () => void;
 }
 
-const SetItem: FC<PropsType> = ({ text, func, color }) => {
-  useEffect(() => {
-    if (func) {
-      func();
-    }
-  }, [func]);
-
-  return (
-    <div>
+const SetItem: FC<PropsType> = ({ text, color, onClickFunction }) => (
+  <Container onClick={onClickFunction}>
+    <Inner>
       <Text color={color}>{text}</Text>
-    </div>
-  );
-};
+    </Inner>
+  </Container>
+);
 
 export default SetItem;

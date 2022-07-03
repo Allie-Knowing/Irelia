@@ -1,50 +1,70 @@
-import { FC, useEffect, useState } from "react";
+import { FC } from "react";
 import { setUpStyle } from "@views";
 import styled from "@emotion/styled";
 
 const Container = styled.section`
   width: 100vw;
+  height: 100vh;
+  background-color: #f3f2f7;
 `;
 
 const Outer = styled.div`
+  height: 100%;
   display: flex;
   flex-direction: column;
 `;
 
-interface StateType {
-  text: string;
-  color: string;
-  func: { (): void } | null;
-}
-
-const configureNames = [
-  "프로필 수정",
-  "관심분야 수정",
-  "알림 설정",
-  "문의하기",
-  "로그아웃",
-  "회원 탈퇴",
-];
-
 const SetUpContainer: FC = () => {
-  const [configure, setConfigure] = useState<StateType[]>(
-    configureNames.map((name) => ({
-      text: name,
-      color: "#000000",
-      func: null,
-    })),
-  );
+  const editProfile = () => {};
+  const editInterests = () => {};
+  const contact = () => {};
+  const logout = () => {};
+  const withdrawal = () => {};
 
-  useEffect(() => {
-    setConfigure()
-  }, [])
+  const SETTING_MAP = [
+    {
+      id: 1,
+      text: "프로필 수정",
+      color: "#000",
+      onClickFunction: editProfile,
+    },
+    {
+      id: 2,
+      text: "관심분야 수정",
+      color: "#000",
+      onClickFunction: editInterests,
+    },
+    {
+      id: 3,
+      text: "문의하기",
+      color: "#000",
+      onClickFunction: contact,
+    },
+    {
+      id: 4,
+      text: "로그아웃",
+      color: "#f85555",
+      onClickFunction: logout,
+    },
+    {
+      id: 5,
+      text: "회원탈퇴",
+      color: "#f85555",
+      onClickFunction: withdrawal,
+    },
+  ];
 
   return (
     <Container>
       <Outer>
-        <setUpStyle.SetItem />
-        <setUpStyle.SetItem />
-        <setUpStyle.SetItem />
+        {SETTING_MAP.map((set) => (
+          <setUpStyle.SetItem
+            key={set.id}
+            text={set.text}
+            color={set.color}
+            onClickFunction={set.onClickFunction}
+          />
+        ))}
       </Outer>
     </Container>
   );
