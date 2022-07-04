@@ -1,6 +1,6 @@
 import { FC } from "react";
 // import styled from "@emotion/styled";
-import { UserItem } from "@views/viewFollow";
+import { UserItem, SelectButton } from "@views/viewFollow";
 
 const ViewFollowContainer: FC = () => {
   const DUMMY = [
@@ -48,6 +48,13 @@ const ViewFollowContainer: FC = () => {
 
   return (
     <div>
+      <SelectButton
+        buttons={[
+          { name: "follower-list", onActive: () => {}, text: `팔로워${2}` },
+          { name: "following-list", onActive: () => {}, text: `팔로잉${100}` },
+        ]}
+        initalName="follower-list"
+      />
       {DUMMY.map((ele) => (
         <UserItem key={ele.id} profile={ele.profile} name={ele.name} />
       ))}

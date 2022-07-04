@@ -33,4 +33,4 @@ const ProfileImage = styled(Image)`
 const Name = styled.p`
   font-size: 14px;
   margin-left: 20px;
-`
+`;
