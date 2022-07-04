@@ -66,7 +66,7 @@ export default SetUpContainer;
 const Container = styled.section`
   width: 100vw;
   height: 100vh;
-  background-color: #f3f2f7;
+  background-color: ${({ theme }) => theme.colors.background};
 `;
 
 const Outer = styled.div`
