@@ -1,8 +1,7 @@
-import { FC } from "react";
 import { ToggleButton, VideoLayout } from "@views/myPage";
 import styled from "@emotion/styled";
 
-const VideoLayoutContainer: FC = () => (
+const VideoLayoutContainer = () => (
   <Container>
     <ToggleButton
       buttons={[

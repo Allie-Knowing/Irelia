@@ -1,8 +1,7 @@
-import { FC } from "react";
 import { UserInfo } from "@views/myPage";
 import styled from "@emotion/styled";
 
-const UserInfoContainer: FC = () => (
+const UserInfoContainer = () => (
   <Container>
     <UserInfo />
   </Container>
