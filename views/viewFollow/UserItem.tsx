@@ -1,6 +1,6 @@
 import { FC } from "react";
 import styled from "@emotion/styled";
-import Image from "next/image";
+import ImageWithDefault from "@components/ImageWithDefault";
 
 interface PropsType {
   profile: string;
@@ -9,7 +9,7 @@ interface PropsType {
 
 const UserItem: FC<PropsType> = ({ profile, name }) => (
   <Conatainer>
-    <ProfileImage src={profile} alt="profile image" width={48} height={48} />
+    <ProfileImage src={profile} width={48} height={48} />
     <Name>{name}</Name>
   </Conatainer>
 );
@@ -25,7 +25,7 @@ const Conatainer = styled.div`
   padding: 12px 20px;
 `;
 
-const ProfileImage = styled(Image)`
+const ProfileImage = styled(ImageWithDefault)`
   border-radius: 50%;
   object-fit: cover;
 `;

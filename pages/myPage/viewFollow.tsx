@@ -59,6 +59,11 @@ const ViewFollowContainer: FC = () => {
       profile: "/a.png",
       name: "찌찌민",
     },
+    {
+      id: 12,
+      profile: "/a.png",
+      name: "찌찌민",
+    },
   ];
 
   return (
