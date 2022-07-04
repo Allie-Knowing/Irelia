@@ -1,10 +1,9 @@
 import { FC } from "react";
-import { ToggleButton, UserInfo, VideoLayout } from "@views/myPage";
+import { ToggleButton, VideoLayout } from "@views/myPage";
 import styled from "@emotion/styled";
 
-const MyPageContainer: FC = () => (
+const VideoLayoutContainer: FC = () => (
   <Container>
-    <UserInfo />
     <ToggleButton
       buttons={[
         { name: "question-list", onActive: () => {}, text: "나의 질문" },
@@ -16,11 +15,11 @@ const MyPageContainer: FC = () => (
   </Container>
 );
 
-export default MyPageContainer;
+export default VideoLayoutContainer;
 
 const Container = styled.section`
   background-color: ${({ theme }) => theme.colors.grayscale.scale10};
   height: 100vh;
   display: flex;
-  flex-direction :column;
+  flex-direction: column;
 `;
