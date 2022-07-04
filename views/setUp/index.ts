@@ -1,1 +1,1 @@
-export { default as SetItem } from "./SetItem";
+export { default as SetUpItem } from "./SetUpItem";
