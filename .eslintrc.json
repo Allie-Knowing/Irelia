@@ -22,7 +22,7 @@
     "react-hooks/rules-of-hooks": "warn",
     "prettier/prettier": "error",
     "no-use-before-define": "off",
-    "@typescript-eslint/no-use-before-define": ["error"],
+    "@typescript-eslint/no-use-before-define": ["off"],
     "react/jsx-filename-extension": [
       1,
       {
