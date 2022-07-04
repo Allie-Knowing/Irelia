@@ -1,6 +1,5 @@
 import { FC, useState } from "react";
 import styled from "@emotion/styled";
-import { useTheme } from "@emotion/react";
 
 interface Button {
   text: string;
@@ -40,6 +39,7 @@ const Container = styled.div`
   width: 100%;
   position: relative;
   display: flex;
+  box-sizing: border-box;
 
   & .active {
     color: ${({ theme }) => theme.colors.grayscale.scale100};

@@ -86,7 +86,7 @@ const Container = styled.section`
   height: 100vh;
   display: flex;
   flex-direction: column;
-`
+`;
 
 const UserItems = styled.div`
   flex: 1;
