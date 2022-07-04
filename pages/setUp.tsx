@@ -1,8 +1,11 @@
 import { FC } from "react";
 import { SetItem } from "@views/setUp";
 import styled from "@emotion/styled";
+import { useTheme } from "@emotion/react";
 
 const SetUpContainer: FC = () => {
+  const theme = useTheme();
+
   const editProfile = () => {};
   const editInterests = () => {};
   const contact = () => {};
@@ -13,31 +16,31 @@ const SetUpContainer: FC = () => {
     {
       id: 1,
       text: "프로필 수정",
-      color: "#000",
+      color: theme.colors.grayscale.scale100,
       onClickFunction: editProfile,
     },
     {
       id: 2,
       text: "관심분야 수정",
-      color: "#000",
+      color: theme.colors.grayscale.scale100,
       onClickFunction: editInterests,
     },
     {
       id: 3,
       text: "문의하기",
-      color: "#000",
+      color: theme.colors.grayscale.scale100,
       onClickFunction: contact,
     },
     {
       id: 4,
       text: "로그아웃",
-      color: "#f85555",
+      color: theme.colors.red.default,
       onClickFunction: logout,
     },
     {
       id: 5,
       text: "회원탈퇴",
-      color: "#f85555",
+      color: theme.colors.red.default,
       onClickFunction: withdrawal,
     },
   ];
