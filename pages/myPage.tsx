@@ -20,4 +20,7 @@ export default MyPageContainer;
 
 const Container = styled.section`
   background-color: ${({ theme }) => theme.colors.grayscale.scale10};
+  height: 100vh;
+  display: flex;
+  flex-direction :column;
 `;

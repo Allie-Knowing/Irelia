@@ -101,7 +101,7 @@ const Toggle = styled.button`
 
 const Back = styled.div`
   background-color: ${({ theme }) => theme.colors.primary.default};
-  transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
   position: absolute;
   border-radius: 10px;
 `;

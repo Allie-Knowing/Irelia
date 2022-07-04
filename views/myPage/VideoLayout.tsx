@@ -6,10 +6,12 @@ const VideoLayout: FC = () => {
   const a = 1;
 
   return (
+    <>
     <Container>
       <Text>
         내가 올린 질문 {a}개
       </Text>
+    </Container>
       <VideoContainer>
         <VideoItem />
         <VideoItem />
@@ -17,14 +19,14 @@ const VideoLayout: FC = () => {
         <VideoItem />
         <VideoItem />
       </VideoContainer>
-    </Container>
+    </>
   );
 };
 
 export default VideoLayout;
 
 const Container = styled.div`
-  padding: 0px 20px 20px;
+  padding: 0px 20px;
 `;
 
 const Text = styled.p`
@@ -37,4 +39,7 @@ const VideoContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
+  flex: 1;
+  overflow: scroll;
+  padding: 0px 20px 20px;
 `;
