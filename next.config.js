@@ -3,7 +3,7 @@ const nextConfig = {
   reactStrictMode: true,
 
   env: {
-    NEXT_PUBLIC_BASEURL: process.env.NEXT_PUBLIC_BASEURL,
+    NEXT_PUBLIC_BASE_URL: process.env.NEXT_PUBLIC_BASE_URL,
   },
 };
 

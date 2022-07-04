@@ -7,8 +7,8 @@ const MyPageContainer: FC = () => (
     <UserInfo />
     <ToggleButton
       buttons={[
-        { name: "question-list", onClick: () => {}, text: "나의 질문" },
-        { name: "answer-list", onClick: () => {}, text: "나의 답변" },
+        { name: "question-list", onActive: () => {}, text: "나의 질문" },
+        { name: "answer-list", onActive: () => {}, text: "나의 답변" },
       ]}
       initalName="question-list"
     />

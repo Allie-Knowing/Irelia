@@ -5,7 +5,7 @@ import { useTheme } from "@emotion/react";
 interface Button {
   text: string;
   name: string;
-  onClick: () => void;
+  onActive: () => void;
 }
 
 interface PropsType {
@@ -13,8 +13,7 @@ interface PropsType {
   initalName: string;
 }
 
-const ToggleButton: FC<PropsType> = (props) => {
-  const { buttons, initalName } = props;
+const ToggleButton: FC<PropsType> = ({ buttons, initalName }) => {
   const theme = useTheme();
   const [active, setActive] = useState<number>(
     buttons.findIndex((v) => v.name === initalName),
@@ -58,7 +57,7 @@ const ToggleButton: FC<PropsType> = (props) => {
             }}
             onClick={() => {
               setActive(index);
-              value.onClick();
+              value.onActive();
             }}
             style={{
               color:

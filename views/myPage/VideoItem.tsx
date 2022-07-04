@@ -19,7 +19,6 @@ const VideoItem: FC = () => (
         </Inner>
       </Outer>
     </VideoNavigation>
-    <ActiveBackground className="activeBackground" />
   </Container>
 );
 
@@ -31,9 +30,7 @@ const Container = styled.div`
 
   position: relative;
   &:active {
-    & .activeBackground {
-      visibility: visible;
-    }
+    opacity: 0.8;
   }
   z-index: 1;
 `;
@@ -74,14 +71,4 @@ const Text = styled.p`
   margin-left: 13%;
   font-size: 10px;
   color: #ffffff;
-`;
-
-const ActiveBackground = styled.div`
-  position: relative;
-  background-color: #ffffff;
-  opacity: 0.4;
-  z-index: 2;
-  width: 100%;
-  height: 100%;
-  visibility: hidden;
 `;
