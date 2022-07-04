@@ -42,32 +42,34 @@ const ToggleButton: FC<PropsType> = ({ buttons, initalName }) => {
     onActiveChange();
   }, [onActiveChange]);
 
+  const onClickHandler = (button: Button, idx: number) => {
+    setActive(idx);
+    button.onActive();
+  };
+
   return (
     <Wrapper>
       <Container>
         {width !== null && height !== null && left !== null && (
           <Back style={{ width, height, left }} />
         )}
-        {buttons.map((value, index) => (
+        {buttons.map((button, idx) => (
           <Toggle
             ref={(r) => {
               if (r) {
-                itemRefs.current[index] = r;
+                itemRefs.current[idx] = r;
               }
             }}
-            onClick={() => {
-              setActive(index);
-              value.onActive();
-            }}
+            onClick={() => onClickHandler(button, idx)}
             style={{
               color:
-                active === index
+                active === idx
                   ? theme.colors.grayscale.scale10
                   : theme.colors.grayscale.scale50,
             }}
-            key={value.name}
+            key={button.name}
           >
-            {value.text}
+            {button.text}
           </Toggle>
         ))}
       </Container>
