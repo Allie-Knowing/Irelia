@@ -54,7 +54,8 @@
     "no-unused-vars": "off",
     "implicit-arrow-linebreak": "off",
     "import/no-cycle": "off",
-    "no-param-reassign": "off"
+    "no-param-reassign": "off",
+    "linebreak-style": "off"
   },
   "plugins": [
     "react",
