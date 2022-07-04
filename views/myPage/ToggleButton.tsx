@@ -42,6 +42,11 @@ const ToggleButton: FC<PropsType> = ({ buttons, initalName }) => {
     onActiveChange();
   }, [onActiveChange]);
 
+  const onClickHandler = (button: Button, idx: number) => {
+    setActive(idx);
+    button.onActive();
+  };
+
   return (
     <Wrapper>
       <Container>
@@ -55,10 +60,7 @@ const ToggleButton: FC<PropsType> = ({ buttons, initalName }) => {
                 itemRefs.current[idx] = r;
               }
             }}
-            onClick={() => {
-              setActive(idx);
-              button.onActive();
-            }}
+            onClick={() => onClickHandler(button, idx)}
             style={{
               color:
                 active === idx

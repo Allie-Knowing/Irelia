@@ -75,7 +75,6 @@ const ViewFollowContainer: FC = () => {
         ]}
         initalName="follower-list"
       />
-
       <UserItems>
         {DUMMY.map((ele) => (
           <UserItem key={ele.id} profile={ele.profile} name={ele.name} />

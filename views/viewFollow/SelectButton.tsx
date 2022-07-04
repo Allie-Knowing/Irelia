@@ -15,15 +15,17 @@ interface PropsType {
 const SelectButton: FC<PropsType> = ({ buttons, initalName }) => {
   const [active, setActive] = useState<string>(initalName);
 
+  const onClickHandler = (button: Button) => {
+    setActive(button.name);
+    button.onActive();
+  };
+
   return (
     <Container>
       {buttons.map((button) => (
         <Select
           key={button.name}
-          onClick={() => {
-            setActive(button.name);
-            button.onActive();
-          }}
+          onClick={() => onClickHandler(button)}
           className={active === button.name ? "active" : "nonActive"}
         >
           {button.text}
