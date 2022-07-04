@@ -6,42 +6,42 @@ const ViewFollowContainer: FC = () => {
   const DUMMY = [
     {
       id: 2,
-      profile: "null",
+      profile: "/a.png",
       name: "찌찌민",
     },
     {
       id: 2,
-      profile: "null",
+      profile: "/a.png",
       name: "찌찌민",
     },
     {
       id: 3,
-      profile: "null",
+      profile: "/a.png",
       name: "찌찌민",
     },
     {
       id: 4,
-      profile: "null",
+      profile: "/a.png",
       name: "찌찌민",
     },
     {
       id: 5,
-      profile: "null",
+      profile: "/a.png",
       name: "찌찌민",
     },
     {
       id: 6,
-      profile: "null",
+      profile: "/a.png",
       name: "찌찌민",
     },
     {
       id: 7,
-      profile: "null",
+      profile: "/a.png",
       name: "찌찌민",
     },
     {
       id: 8,
-      profile: "null",
+      profile: "/a.png",
       name: "찌찌민",
     },
   ];
