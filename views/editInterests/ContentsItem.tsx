@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import theme from "@utils/theme";
 import Image from "next/image";
 import React, { FC, useEffect } from "react";
 
@@ -20,6 +21,7 @@ const ContentsItem: FC<PropsType> = ({
   <Container onClick={() => onClick(index)} isSelect={isSelect}>
     <Name>{name}</Name>
     <Item src={img} alt="interests image" layout="fill" />
+    {isSelect ? <Circle /> : <Donut />}
   </Container>
 );
 
@@ -42,7 +44,6 @@ const Container = styled.div<{ isSelect: boolean }>`
 const Item = styled(Image)`
   object-fit: cover;
   position: relative;
-  /* border-radius: 8px; */
   z-index: -1;
 `;
 
@@ -51,4 +52,24 @@ const Name = styled.p`
   color: ${({ theme }) => theme.colors.grayscale.scale10};
   position: relative;
   z-index: 2;
+`;
+
+const Donut = styled.div`
+  border: 2px solid ${({ theme }) => theme.colors.background};
+  border-radius: 100px;
+  height: 24px;
+  width: 24px;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+`;
+
+const Circle = styled.div`
+  width: 24px;
+  height: 24px;
+  border-radius: 100px;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background-color: ${({ theme }) => theme.colors.primary.default}
 `;
