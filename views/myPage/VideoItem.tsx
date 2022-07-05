@@ -26,7 +26,6 @@ export default VideoItem;
 
 const Container = styled.div`
   flex: 1;
-  aspect-ratio: 1/ 1.56;
   aspect-ratio: 75 / 133;
   position: relative;
   &:active {

@@ -1,1 +1,1 @@
-export { default as ContentsContainer } from "./ContentsContainer";
+export { default as ContentsLayout } from "./ContentsLayout";

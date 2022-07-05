@@ -1,11 +1,11 @@
 import styled from "@emotion/styled";
-import { ContentsContainer } from "@views/editInterests";
+import { ContentsLayout } from "@views/editInterests";
 
 const EditInterestsContainer = () => (
   <Container>
     <P1>관심있는 컨텐츠를 선택해보세요</P1>
     <P2>최대 3개까지 선택할 수 있어요</P2>
-    <ContentsContainer />
+    <ContentsLayout />
   </Container>
 );
 
