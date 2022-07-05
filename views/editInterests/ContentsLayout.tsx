@@ -10,9 +10,29 @@ import {
   Music,
   Sports,
 } from "@assets/images";
+import { useState } from "react";
 import ContentsItem from "./ContentsItem";
 
 const ContentsLayout = () => {
+  const [selectCount, setSelectCount] = useState<number>(0);
+  const [selectArr, setSelectArr] = useState<boolean[]>(Array(9).fill(false));
+
+  const onClick = (index: number) => {
+    if (selectCount >= 3 && !selectArr[index]) {
+      return;
+    }
+
+    if (selectArr[index]) {
+      setSelectCount(selectCount - 1);
+    }
+
+    if (!selectArr[index]) {
+      setSelectCount(selectCount + 1);
+    }
+
+    setSelectArr(selectArr.map((v, i) => (i === index ? !v : v)));
+  };
+
   const CONTENTS = [
     {
       name: "패션",
@@ -54,11 +74,14 @@ const ContentsLayout = () => {
 
   return (
     <Container>
-      {CONTENTS.map((content) => (
+      {CONTENTS.map((content, idx) => (
         <ContentsItem
           key={content.name}
           name={content.name}
           img={content.img}
+          index={idx}
+          isSelect={selectArr[idx]}
+          onClick={onClick}
         />
       ))}
     </Container>
