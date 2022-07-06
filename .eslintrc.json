@@ -55,7 +55,10 @@
     "implicit-arrow-linebreak": "off",
     "import/no-cycle": "off",
     "no-param-reassign": "off",
-    "linebreak-style": "off"
+    "linebreak-style": "off",
+    "arrow-body-style": "off",
+    "prettier/prettier": "off",
+    "no-trailing-spaces": "off"
   },
   "plugins": [
     "react",
