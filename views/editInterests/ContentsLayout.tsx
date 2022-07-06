@@ -10,8 +10,8 @@ import {
   Music,
   Sports,
 } from "@assets/images";
-import { useState } from "react";
-import ContentsItem from "./ContentsItem";
+import React, { FC, useEffect, useState } from "react";
+import { ContentsItem } from "@views/editInterests";
 
 const CONTENTS = [
   {
@@ -52,8 +52,17 @@ const CONTENTS = [
   },
 ];
 
-const ContentsLayout = () => {
+interface PropsType {
+  setButtonActive: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+const ContentsLayout: FC<PropsType> = ({ setButtonActive }) => {
   const [names, setNames] = useState<string[]>([]);
+
+  useEffect(() => {
+    if (names.length >= 1) { setButtonActive(true); }
+    else { setButtonActive(false); }
+  }, [names])
 
   const onClick = (index: number) => {
     const { name } = CONTENTS[index];
