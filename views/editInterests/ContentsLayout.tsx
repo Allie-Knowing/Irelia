@@ -53,7 +53,7 @@ const CONTENTS = [
 ];
 
 interface PropsType {
-  setButtonActive: React.Dispatch<React.SetStateAction<boolean>>
+  setButtonActive: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const ContentsLayout: FC<PropsType> = ({ setButtonActive }) => {

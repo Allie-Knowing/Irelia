@@ -7,7 +7,7 @@ interface PropsType {
 }
 
 const CompleteButton: FC<PropsType> = ({ buttonActive }) => (
-  <Container buttonActive={buttonActive}>
+  <Container buttonActive={buttonActive} disabled={!buttonActive}>
     <Text>버튼</Text>
   </Container>
 );
@@ -21,13 +21,13 @@ const Container = styled.button<{ buttonActive: boolean }>`
   align-items: center;
   margin-top: 50px;
   ${(props) =>
-  (props.buttonActive
-    ? css`
+    props.buttonActive
+      ? css`
           background-color: ${props.theme.colors.primary.default};
         `
-    : css`
+      : css`
           background-color: ${props.theme.colors.grayscale.scale20};
-        `)}
+        `}
 `;
 
 const Text = styled.p`
