@@ -13,64 +13,63 @@ import {
 import { useState } from "react";
 import ContentsItem from "./ContentsItem";
 
+const CONTENTS = [
+  {
+    name: "패션",
+    img: Fashion,
+  },
+  {
+    name: "헬스",
+    img: Health,
+  },
+  {
+    name: "동물",
+    img: Animal,
+  },
+  {
+    name: "뷰티",
+    img: Beauty,
+  },
+  {
+    name: "요리",
+    img: Cook,
+  },
+  {
+    name: "상담",
+    img: Consulting,
+  },
+  {
+    name: "게임",
+    img: Game,
+  },
+  {
+    name: "스포츠",
+    img: Sports,
+  },
+  {
+    name: "음악",
+    img: Music,
+  },
+];
+
 const ContentsLayout = () => {
-  const [selectCount, setSelectCount] = useState<number>(0);
-  const [selectArr, setSelectArr] = useState<boolean[]>(Array(9).fill(false));
+  const [names, setNames] = useState<string[]>([]);
 
   const onClick = (index: number) => {
-    if (selectCount >= 3 && !selectArr[index]) {
-      return;
-    }
+    const { name } = CONTENTS[index];
 
-    if (selectArr[index]) {
-      setSelectCount(selectCount - 1);
-    }
+    setNames((prev) => {
+      if (prev.find((v) => v === name)) {
+        return prev.filter((v) => v !== name);
+      }
 
-    if (!selectArr[index]) {
-      setSelectCount(selectCount + 1);
-    }
+      if (prev.length < 3) {
+        return [...prev, name];
+      }
 
-    setSelectArr(selectArr.map((v, i) => (i === index ? !v : v)));
+      return prev;
+    });
   };
-
-  const CONTENTS = [
-    {
-      name: "패션",
-      img: Fashion,
-    },
-    {
-      name: "헬스",
-      img: Health,
-    },
-    {
-      name: "동물",
-      img: Animal,
-    },
-    {
-      name: "뷰티",
-      img: Beauty,
-    },
-    {
-      name: "요리",
-      img: Cook,
-    },
-    {
-      name: "상담",
-      img: Consulting,
-    },
-    {
-      name: "게임",
-      img: Game,
-    },
-    {
-      name: "스포츠",
-      img: Sports,
-    },
-    {
-      name: "음악",
-      img: Music,
-    },
-  ];
 
   return (
     <Container>
@@ -80,7 +79,8 @@ const ContentsLayout = () => {
           name={content.name}
           img={content.img}
           index={idx}
-          isSelect={selectArr[idx]}
+          selectCount={names.findIndex((v) => v === content.name) + 1}
+          isSelect={names.includes(content.name)}
           onClick={onClick}
         />
       ))}
