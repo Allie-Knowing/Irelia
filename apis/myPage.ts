@@ -3,13 +3,15 @@ import request from "@utils/request";
 import { getUserId } from "@apis";
 
 interface GetUserInfoResponse {
-  name: string;
-  profile: string;
-  email: string;
-  follwer: number;
-  following: number;
-  video_cnt: number;
-  answer_video_cnt: number;
+  data: {
+    name: string;
+    profile: string;
+    email: string;
+    follower_cnt: number;
+    following_cnt: number;
+    video_cnt: number;
+    answer_video_cnt: number;
+  };
 }
 
 export const getUserInfo = async (userId: number) => {

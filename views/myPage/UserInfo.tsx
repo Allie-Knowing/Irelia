@@ -1,21 +1,39 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import styled from "@emotion/styled";
 import ImageWithDefault from "@components/ImageWithDefault";
+import { useQuery } from "react-query";
+import queryKey from "@constants/queryKey";
+import { getMyInfo } from "@apis/myPage";
 
-const UserInfo: FC = () => (
-  <Container>
-    <Outer>
-      <ProfileImage src="/a.png" width={65} height={65} />
-      <Inner>
-        <Name>name</Name>
-        <FollowContainer>
-          <Follow>팔로워 0</Follow>
-          <Follow>팔로잉 0</Follow>
-        </FollowContainer>
-      </Inner>
-    </Outer>
-  </Container>
-);
+const UserInfo: FC = () => {
+  const { data, isLoading, isError } = useQuery([queryKey.myInfo], getMyInfo);
+  const shortenData = data?.data.data;
+
+  useEffect(() => {
+    console.log(data);
+  }, [data, isError, isLoading]);
+
+  return (
+    <Container>
+      <Outer>
+        <ProfileImage src={shortenData?.profile} width={65} height={65} />
+        <Inner>
+          <Name>{shortenData?.name}</Name>
+          <FollowContainer>
+            <Follow>
+              팔로워
+              {shortenData?.follower_cnt}
+            </Follow>
+            <Follow>
+              팔로잉
+              {shortenData?.following_cnt}
+            </Follow>
+          </FollowContainer>
+        </Inner>
+      </Outer>
+    </Container>
+  );
+};
 
 export default UserInfo;
 
@@ -40,7 +58,7 @@ const Inner = styled.div`
 const FollowContainer = styled.div`
   display: flex;
   flex-direction: row;
-  column-gap: 8px;
+  column-gap: 10px;
 `;
 
 const Follow = styled.p`
