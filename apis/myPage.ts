@@ -59,3 +59,34 @@ export const getQuestionVideos = async ({ pageParam = 0 }) => {
   );
   return res.data;
 };
+
+interface GetFollowListResponse {
+  id: number;
+  profile: string;
+  name: string;
+}
+
+export const getFollowerList = async () => {
+  const userId = await getUserId();
+  const res = await request.get<GetFollowListResponse[]>(`${uri.follwerList}`, {
+    params: {
+      userId,
+    },
+  });
+
+  return res.data;
+};
+
+export const getFollowingList = async () => {
+  const userId = await getUserId();
+  const res = await request.get<GetFollowListResponse[]>(
+    `${uri.followingList}`,
+    {
+      params: {
+        userId,
+      },
+    },
+  );
+
+  return res.data;
+};

@@ -1,85 +1,54 @@
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import styled from "@emotion/styled";
 import { UserItem, SelectButton } from "@views/viewFollow";
+import { useQuery } from "react-query";
+import queryKey from "@constants/queryKey";
+import { getFollowerList, getFollowingList } from "@apis/myPage";
 
 const ViewFollowContainer: FC = () => {
-  const DUMMY = [
-    {
-      id: 2,
-      profile: "/a.png",
-      name: "찌찌민",
-    },
-    {
-      id: 2,
-      profile: "/a.png",
-      name: "찌찌민",
-    },
-    {
-      id: 3,
-      profile: "/a.png",
-      name: "찌찌민",
-    },
-    {
-      id: 4,
-      profile: "/a.png",
-      name: "찌찌민",
-    },
-    {
-      id: 5,
-      profile: "/a.png",
-      name: "찌찌민",
-    },
-    {
-      id: 6,
-      profile: "/a.png",
-      name: "찌찌민",
-    },
-    {
-      id: 7,
-      profile: "/a.png",
-      name: "찌찌민",
-    },
-    {
-      id: 8,
-      profile: "/a.png",
-      name: "찌찌민",
-    },
-    {
-      id: 9,
-      profile: "/a.png",
-      name: "찌찌민",
-    },
-    {
-      id: 10,
-      profile: "/a.png",
-      name: "찌찌민",
-    },
-    {
-      id: 11,
-      profile: "/a.png",
-      name: "찌찌민",
-    },
-    {
-      id: 12,
-      profile: "/a.png",
-      name: "찌찌민",
-    },
-  ];
+  const res1 = useQuery([queryKey.followerList], getFollowerList);
+  const res2 = useQuery([queryKey.followingList], getFollowingList);
+
+  const [isFollower, setIsFollower] = useState<boolean>(true);
+
+  useEffect(() => {
+    console.log(res1);
+  }, [res1]);
+
+  if (res1.isLoading || res1.isLoading) {
+    return <div>loading</div>;
+  }
+
+  if (res1.isError || res2.isError) {
+    return <div>error</div>;
+  }
 
   return (
     <Container>
       <SelectButton
         buttons={[
-          { name: "follower-list", onActive: () => {}, text: `팔로워 ${2}` },
-          { name: "following-list", onActive: () => {}, text: `팔로잉 ${100}` },
+          {
+            name: "follower-list",
+            onActive: () => {
+              setIsFollower(true);
+            },
+            text: `팔로워 ${res1.data?.length}`,
+          },
+          {
+            name: "following-list",
+            onActive: () => {
+              setIsFollower(false);
+            },
+            text: `팔로잉 ${res2.data?.length}`,
+          },
         ]}
         initalName="follower-list"
       />
-      <UserItems>
-        {DUMMY.map((ele) => (
+      {/* <UserItems>
+        {isFollower ? res1.map((ele) => (
           <UserItem key={ele.id} profile={ele.profile} name={ele.name} />
         ))}
-      </UserItems>
+      </UserItems> */}
     </Container>
   );
 };
