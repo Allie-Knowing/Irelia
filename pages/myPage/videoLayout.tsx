@@ -9,7 +9,7 @@ const VideoLayoutContainer = () => {
       [queryKey.myQuestion],
       getQuestionVideos,
       {
-        getNextPageParam: () => true,
+        getNextPageParam: (lastPage) => lastPage.data.id + 1,
       },
     );
   };
