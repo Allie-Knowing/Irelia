@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import React, { FC, useEffect, useState } from "react";
 import { ContentsItem } from "@views/editInterests";
-import INTERESTS_CATEGORIES from "@constants/dummies";
+import INTERESTS_CATEGORIES from "@constants/interestCategory";
 
 interface PropsType {
   setButtonActive: React.Dispatch<React.SetStateAction<boolean>>;
@@ -16,7 +16,7 @@ const ContentsLayout: FC<PropsType> = ({ setButtonActive }) => {
   }, [names])
 
   const onClick = (index: number) => {
-    const { name } = CONTENTS[index];
+    const { name } = INTERESTS_CATEGORIES[index];
 
     setNames((prev) => {
       if (prev.find((v) => v === name)) {
