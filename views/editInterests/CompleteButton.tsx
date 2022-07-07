@@ -20,14 +20,10 @@ const Container = styled.button<{ buttonActive: boolean }>`
   justify-content: center;
   align-items: center;
   margin-top: 50px;
-  ${(props) =>
-    props.buttonActive
-      ? css`
-          background-color: ${props.theme.colors.primary.default};
-        `
-      : css`
-          background-color: ${props.theme.colors.grayscale.scale20};
-        `}
+  background-color: ${(props) =>
+    (props.buttonActive
+      ? props.theme.colors.primary.default
+      : props.theme.colors.grayscale.scale20)};
 `;
 
 const Text = styled.p`
