@@ -1,17 +1,11 @@
 import { FC } from "react";
 import styled from "@emotion/styled";
-import { ForTest } from "@images";
-import Image from "next/image";
+import ImageWithDefault from "@components/ImageWithDefault";
 
 const UserInfo: FC = () => (
   <Container>
     <Outer>
-      <ProfileImage
-        src={ForTest.src}
-        alt="profile image"
-        width={65}
-        height={65}
-      />
+      <ProfileImage src="/a.png" width={65} height={65} />
       <Inner>
         <Name>name</Name>
         <FollowContainer>
@@ -58,7 +52,7 @@ const Name = styled.p`
   font-size: 16px;
 `;
 
-const ProfileImage = styled(Image)`
+const ProfileImage = styled(ImageWithDefault)`
   border-radius: 50%;
   object-fit: cover;
 `;
