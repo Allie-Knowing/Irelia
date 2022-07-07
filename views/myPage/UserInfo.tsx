@@ -4,13 +4,14 @@ import ImageWithDefault from "@components/ImageWithDefault";
 import { useQuery } from "react-query";
 import queryKey from "@constants/queryKey";
 import { getMyInfo } from "@apis/myPage";
+import { UserInfoSkeleton } from "@views/myPage";
 
 const UserInfo: FC = () => {
   const { data, isLoading, isError } = useQuery([queryKey.myInfo], getMyInfo);
   const shortenData = data?.data.data;
 
   if (isLoading) {
-    return <div>loading</div>;
+    return <UserInfoSkeleton />;
   }
 
   if (isError) {
@@ -67,7 +68,7 @@ const FollowContainer = styled.div`
 
 const Follow = styled.p`
   font-size: 14px;
-  color: #97979c;
+  color: ${({ theme }) => theme.colors.grayscale.scale40};
 `;
 
 const Name = styled.p`
