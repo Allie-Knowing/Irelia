@@ -8,7 +8,7 @@ import { UserInfoSkeleton } from "@views/myPage";
 
 const UserInfo: FC = () => {
   const { data, isLoading, isError } = useQuery([queryKey.myInfo], getMyInfo);
-  const shortenData = data?.data.data;
+  const shortenData = data?.data;
 
   if (isLoading) {
     return <UserInfoSkeleton />;
