@@ -14,7 +14,14 @@ const ImageWithDefault: FC<ImageProps> = (props) => {
     setData(defaultProfile);
   };
 
-  return <Image {...rest} src={data} alt="image" onError={onError} />;
+  return (
+    <Image
+      {...rest}
+      src={data || defaultProfile}
+      alt="image"
+      onError={onError}
+    />
+  );
 };
 
 export default ImageWithDefault;

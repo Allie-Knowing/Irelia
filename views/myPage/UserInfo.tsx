@@ -1,4 +1,4 @@
-import { FC, useEffect } from "react";
+import { FC } from "react";
 import styled from "@emotion/styled";
 import ImageWithDefault from "@components/ImageWithDefault";
 import { useQuery } from "react-query";
@@ -9,14 +9,18 @@ const UserInfo: FC = () => {
   const { data, isLoading, isError } = useQuery([queryKey.myInfo], getMyInfo);
   const shortenData = data?.data.data;
 
-  useEffect(() => {
-    console.log(data);
-  }, [data, isError, isLoading]);
+  if (isLoading) {
+    return <div>loading</div>;
+  }
+
+  if (isError) {
+    return <div>error</div>;
+  }
 
   return (
     <Container>
       <Outer>
-        <ProfileImage src={shortenData?.profile} width={65} height={65} />
+        <ProfileImage src={shortenData?.profile || ""} width={65} height={65} />
         <Inner>
           <Name>{shortenData?.name}</Name>
           <FollowContainer>
