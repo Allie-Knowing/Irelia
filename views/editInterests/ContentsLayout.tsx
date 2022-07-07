@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import React, { FC, useEffect, useState } from "react";
 import { ContentsItem } from "@views/editInterests";
-import CONTENTS from "@constants/dummies";
+import INTERESTS_CATEGORIES from "@constants/dummies";
 
 interface PropsType {
   setButtonActive: React.Dispatch<React.SetStateAction<boolean>>;
@@ -33,7 +33,7 @@ const ContentsLayout: FC<PropsType> = ({ setButtonActive }) => {
 
   return (
     <Container>
-      {CONTENTS.map((content, idx) => (
+      {INTERESTS_CATEGORIES.map((content, idx) => (
         <ContentsItem
           key={content.name}
           name={content.name}

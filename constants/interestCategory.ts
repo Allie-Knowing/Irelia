@@ -10,7 +10,7 @@ import {
   Sports,
 } from "@assets/images";
 
-const CONTENTS = [
+const INTERESTS_CATEGORIES = [
   {
     name: "패션",
     img: Fashion,
@@ -49,4 +49,4 @@ const CONTENTS = [
   },
 ];
 
-export default CONTENTS;
+export default INTERESTS_CATEGORIES;
