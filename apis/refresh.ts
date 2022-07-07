@@ -1,4 +1,4 @@
-import { uri } from "@constants";
+import uri from "@constants/uri";
 import { requestWithNoToken } from "@utils/request";
 
 interface RefreshResponse {

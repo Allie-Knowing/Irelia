@@ -19,7 +19,7 @@ const Container = styled.section`
   margin-top: 10px;
   padding: 16px 20px;
   width: 100vw;
-  background-color: #ffffff;
+  background-color: ${({ theme }) => theme.colors.grayscale.scale10};
 
   &:active {
     opacity: 0.8;
