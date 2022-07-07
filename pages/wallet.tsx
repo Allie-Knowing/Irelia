@@ -6,6 +6,7 @@ const WalletPage: FC = () => (
   <Container>
     <S.WalletHeader />
     <S.WalletCotent />
+    <S.IQHistory />
   </Container>
 );
 
