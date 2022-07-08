@@ -1,6 +1,6 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useState } from "react";
 import styled from "@emotion/styled";
-import { UserItem, SelectButton } from "@views/viewFollow";
+import { UserItem, SelectButton, UserItemSkeleton } from "@views/viewFollow";
 import { useQuery } from "react-query";
 import queryKey from "@constants/queryKey";
 import { getFollowerList, getFollowingList } from "@apis/myPage";
@@ -12,14 +12,14 @@ const ViewFollowContainer: FC = () => {
   const [isFollower, setIsFollower] = useState<boolean>(true);
 
   if (res1.isLoading || res1.isLoading) {
-    return <div>loading</div>;
+    return <UserItemSkeleton />;
   }
 
   if (res1.isError || res2.isError) {
     return <div>error</div>;
   }
 
-  const whatMap = () => (isFollower ? res1.data : res2.data);
+  const whatsSelected = () => (isFollower ? res1.data : res2.data);
 
   return (
     <Container>
@@ -43,7 +43,7 @@ const ViewFollowContainer: FC = () => {
         initalName="follower-list"
       />
       <UserItems>
-        {whatMap().map((ele) => (
+        {whatsSelected().map((ele) => (
           <UserItem key={ele.id} profile={ele.profile} name={ele.name} />
         ))}
       </UserItems>
