@@ -9,7 +9,7 @@ interface PropsType {
 
 const UserItem: FC<PropsType> = ({ profile, name }) => (
   <Conatainer>
-    <ProfileImage src={profile} width={48} height={48} />
+    <ProfileImage src={profile || ""} width={48} height={48} />
     <Name>{name}</Name>
   </Conatainer>
 );

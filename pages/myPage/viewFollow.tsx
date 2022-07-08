@@ -11,10 +11,6 @@ const ViewFollowContainer: FC = () => {
 
   const [isFollower, setIsFollower] = useState<boolean>(true);
 
-  useEffect(() => {
-    console.log(res1);
-  }, [res1]);
-
   if (res1.isLoading || res1.isLoading) {
     return <div>loading</div>;
   }
@@ -22,6 +18,8 @@ const ViewFollowContainer: FC = () => {
   if (res1.isError || res2.isError) {
     return <div>error</div>;
   }
+
+  const whatMap = () => (isFollower ? res1.data : res2.data);
 
   return (
     <Container>
@@ -44,11 +42,11 @@ const ViewFollowContainer: FC = () => {
         ]}
         initalName="follower-list"
       />
-      {/* <UserItems>
-        {isFollower ? res1.map((ele) => (
+      <UserItems>
+        {whatMap().map((ele) => (
           <UserItem key={ele.id} profile={ele.profile} name={ele.name} />
         ))}
-      </UserItems> */}
+      </UserItems>
     </Container>
   );
 };

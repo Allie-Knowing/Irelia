@@ -49,7 +49,7 @@ interface GetQuestionVideoResponse {
 export const getQuestionVideos = async ({ pageParam = 0 }) => {
   const userId = await getUserId();
   const res = await requestWithNoToken.get<GetQuestionVideoResponse>(
-    `${uri.questionVideos}/${userId}`,
+    `${uri.questionVideos}/${userId.data.data}`,
     {
       params: {
         page: pageParam,
@@ -70,7 +70,7 @@ export const getFollowerList = async () => {
   const userId = await getUserId();
   const res = await request.get<GetFollowListResponse[]>(`${uri.follwerList}`, {
     params: {
-      userId,
+      userId: userId.data.data,
     },
   });
 
@@ -83,7 +83,7 @@ export const getFollowingList = async () => {
     `${uri.followingList}`,
     {
       params: {
-        userId,
+        userId: userId.data.data,
       },
     },
   );

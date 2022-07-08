@@ -2,24 +2,23 @@ import { ToggleButton, VideoLayout } from "@views/myPage";
 import styled from "@emotion/styled";
 import queryKey from "@constants/queryKey";
 import { getQuestionVideos } from "@apis/myPage";
+import { useInfiniteQuery } from "react-query";
 
 const VideoLayoutContainer = () => {
-  const onMyQuestion = () => {
-    const { data, isLoading, isError } = useInfiniteQuery(
-      [queryKey.myQuestion],
-      getQuestionVideos,
-      {
-        getNextPageParam: (lastPage) => lastPage.data.id + 1,
-      },
-    );
-  };
+  const res = useInfiniteQuery([queryKey.myQuestion], getQuestionVideos, {
+    getNextPageParam: (lastPage) => lastPage.data.id,
+  });
 
   return (
     <Container>
       <ToggleButton
         buttons={[
-          { name: "question-list", onActive: () => {}, text: "나의 질문" },
-          { name: "answer-list", onActive: () => {}, text: "나의 답변" },
+          {
+            name: "question-list",
+            onActive: () => { },
+            text: "나의 질문",
+          },
+          { name: "answer-list", onActive: () => { }, text: "나의 답변" },
         ]}
         initalName="question-list"
       />
