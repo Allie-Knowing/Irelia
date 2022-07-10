@@ -2,9 +2,11 @@ import styled from "@emotion/styled";
 import Image from "next/image";
 import React, { FC } from "react";
 import { logoIcon } from "@icons";
+import TierModal from "./TierModal";
 
 const WalletHeader: FC = () => (
   <Container>
+    <TierModal />
     <Image src={logoIcon} alt="logo" />
     <HeaderTitleFont>지갑</HeaderTitleFont>
   </Container>
