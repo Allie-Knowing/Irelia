@@ -26,14 +26,14 @@ const ViewFollowContainer: FC = () => {
             onActive: () => {
               setIsFollower(true);
             },
-            text: `팔로워 ${res1.data?.length}`,
+            text: res1.isLoading ? "팔로워" : `팔로워 ${res1.data?.length}`,
           },
           {
             name: "following-list",
             onActive: () => {
               setIsFollower(false);
             },
-            text: `팔로잉 ${res2.data?.length}`,
+            text: res1.isLoading ? "팔로잉" : `팔로잉 ${res2.data?.length}`,
           },
         ]}
         initalName="follower-list"
