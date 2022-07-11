@@ -6,6 +6,7 @@ const nextConfig = {
       "avatars.githubusercontent.com",
       "ssl.pstatic.net",
       "s3.ap-northeast-2.amazonaws.com",
+      "test-knowing.s3.ap-northeast-2.amazonaws.com",
     ],
   },
   env: {

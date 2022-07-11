@@ -1,4 +1,3 @@
-export { default as ForTest } from "./for_test.jpg";
 export { default as Animal } from "./animal.svg";
 export { default as Beauty } from "./beauty.svg";
 export { default as Consulting } from "./consulting.svg";

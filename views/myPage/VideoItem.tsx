@@ -1,21 +1,26 @@
 import { FC } from "react";
 import styled from "@emotion/styled";
-import { ForTest } from "@images";
 import { playIcon, likeIcon } from "@icons";
 import Image from "next/image";
 
-const VideoItem: FC = () => (
+interface PropsType {
+  thumbnail: string;
+  likeCnt: number;
+  views: number;
+}
+
+const VideoItem: FC<PropsType> = ({ thumbnail, likeCnt, views }) => (
   <Container>
-    <Thumbnail src={ForTest.src} alt="thumbnail" layout="fill" />
+    <Thumbnail src={thumbnail} alt="thumbnail" layout="fill" />
     <VideoNavigation>
       <Outer>
         <Inner>
           <Image src={playIcon} alt="play icon" width={10} height={10} />
-          <Text>13만</Text>
+          <Text>{likeCnt}</Text>
         </Inner>
         <Inner>
           <Image src={likeIcon} alt="like icon" width={12} height={10} />
-          <Text>123만</Text>
+          <Text>{views}</Text>
         </Inner>
       </Outer>
     </VideoNavigation>

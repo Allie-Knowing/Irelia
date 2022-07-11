@@ -27,23 +27,25 @@ export const getMyInfo = async () => {
   return getUserInfo(userId.data.data);
 };
 
+interface VideoObject {
+  id: number;
+  video_description: string;
+  video_title: string;
+  thumbnail: string;
+  views: number;
+  user_id: number;
+  user_profile: string;
+  is_adoption: number;
+  video_url: string;
+  created_at: string;
+  comment_cnt: number;
+  like_cnt: number;
+  is_mine: boolean;
+  is_like: boolean;
+}
+
 interface GetMyPageVideoResponse {
-  data: {
-    id: number;
-    video_description: string;
-    video_title: string;
-    thumbnail: string;
-    views: number;
-    user_id: number;
-    user_profile: string;
-    is_adoption: number;
-    video_url: string;
-    created_at: string;
-    comment_cnt: number;
-    like_cnt: number;
-    is_mine: boolean;
-    is_like: boolean;
-  };
+  data: VideoObject[];
 }
 
 export const getQuestionVideos = async ({ pageParam = 1 }) => {
