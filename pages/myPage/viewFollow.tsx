@@ -43,7 +43,7 @@ const ViewFollowContainer: FC = () => {
         initalName="follower-list"
       />
       <UserItems>
-        {whatsSelected().map((ele) => (
+        {whatsSelected()?.map((ele) => (
           <UserItem key={ele.id} profile={ele.profile} name={ele.name} />
         ))}
       </UserItems>

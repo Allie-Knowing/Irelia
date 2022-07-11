@@ -27,7 +27,7 @@ export const getMyInfo = async () => {
   return getUserInfo(userId.data.data);
 };
 
-interface GetQuestionVideoResponse {
+interface GetMyPageVideoResponse {
   data: {
     id: number;
     video_description: string;
@@ -46,10 +46,24 @@ interface GetQuestionVideoResponse {
   };
 }
 
-export const getQuestionVideos = async ({ pageParam = 0 }) => {
+export const getQuestionVideos = async ({ pageParam = 1 }) => {
   const userId = await getUserId();
-  const res = await requestWithNoToken.get<GetQuestionVideoResponse>(
+  const res = await requestWithNoToken.get<GetMyPageVideoResponse>(
     `${uri.questionVideos}/${userId.data.data}`,
+    {
+      params: {
+        page: pageParam,
+        size: 6,
+      },
+    },
+  );
+  return res.data;
+};
+
+export const getAnswerVideos = async ({ pageParam = 1 }) => {
+  const userId = await getUserId();
+  const res = await requestWithNoToken.get<GetMyPageVideoResponse>(
+    `${uri.answerVideos}/${userId.data.data}`,
     {
       params: {
         page: pageParam,

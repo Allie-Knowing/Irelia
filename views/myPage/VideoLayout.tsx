@@ -2,24 +2,41 @@ import { FC } from "react";
 import styled from "@emotion/styled";
 import { VideoItem } from "@views/myPage";
 
-const VideoLayout: FC = () => {
+interface VideosType {
+  id: number;
+  video_description: string;
+  video_title: string;
+  thumbnail: string;
+  views: number;
+  user_id: number;
+  user_profile: string;
+  is_adoption: number;
+  video_url: string;
+  created_at: string;
+  comment_cnt: number;
+  like_cnt: number;
+  is_mine: boolean;
+  is_like: boolean;
+}
+
+interface PropsType {
+  videos: VideosType[];
+}
+
+const VideoLayout: FC<PropsType> = ({ videos }) => {
   const a = 1;
 
   return (
-    <>
-    <Container>
-      <Text>
-        내가 올린 질문 {a}개
-      </Text>
-    </Container>
+    <div>
+      <Container>
+        <Text>내가 올린 질문 {a}개</Text>
+      </Container>
       <VideoContainer>
-        <VideoItem />
-        <VideoItem />
-        <VideoItem />
-        <VideoItem />
-        <VideoItem />
+        {videos.map((v) => (
+          <VideoItem key={v.id} />
+        ))}
       </VideoContainer>
-    </>
+    </div>
   );
 };
 
