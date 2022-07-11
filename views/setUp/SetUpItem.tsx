@@ -9,7 +9,7 @@ interface PropsType {
 
 const SetItem: FC<PropsType> = ({ text, color, onClickFunction }) => (
   <Container onClick={onClickFunction}>
-      <Text color={color}>{text}</Text>
+    <Text color={color}>{text}</Text>
   </Container>
 );
 
