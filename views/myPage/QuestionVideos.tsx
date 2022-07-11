@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { VideoItem } from "@views/myPage";
-import { useInfiniteQuery } from "react-query";
+import { isError, useInfiniteQuery } from "react-query";
 import queryKey from "@constants/queryKey";
 import { getMyQuesionList } from "@apis/myPage";
 import { useInView } from "react-intersection-observer";
@@ -27,7 +27,7 @@ const QuestionVideos = () => {
   );
 
   useEffect(() => {
-    if (inView) {
+    if (inView && !questionRes.isError) {
       questionRes.fetchNextPage();
     }
   }, [inView, questionRes]);
@@ -38,9 +38,9 @@ const QuestionVideos = () => {
     return <div>loading..</div>;
   }
 
-  if (questionRes.isError) {
-    return <div>Error.</div>;
-  }
+  // if (questionRes.isError) {
+  //   return <div>Error.</div>;
+  // }
 
   return (
     <div>
