@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { VideoItem } from "@views/myPage";
-import { isError, useInfiniteQuery } from "react-query";
+import { useInfiniteQuery } from "react-query";
 import queryKey from "@constants/queryKey";
 import { getMyQuesionList } from "@apis/myPage";
 import { useInView } from "react-intersection-observer";
@@ -16,6 +16,7 @@ const QuestionVideos = () => {
     },
     {
       getNextPageParam: (lastPage) => lastPage.page + 1,
+      retry: 0,
     },
   );
 
@@ -37,10 +38,6 @@ const QuestionVideos = () => {
   if (questionRes.isLoading) {
     return <div>loading..</div>;
   }
-
-  // if (questionRes.isError) {
-  //   return <div>Error.</div>;
-  // }
 
   return (
     <div>

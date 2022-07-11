@@ -10,12 +10,13 @@ const AnswerVideos = () => {
   const answerRes = useInfiniteQuery(
     [queryKey.myAnswer],
     async ({ pageParam = 1 }) => {
-      const res = (await getMyAnswerList(pageParam, 10)).data.data
+      const res = (await getMyAnswerList(pageParam, 10)).data.data;
 
       return { page: pageParam, data: res };
     },
     {
       getNextPageParam: (lastPage) => lastPage.page + 1,
+      retry: 0,
     },
   );
 
@@ -27,12 +28,16 @@ const AnswerVideos = () => {
   );
 
   useEffect(() => {
-    if (inView) {
+    if (inView && !answerRes.isError) {
       answerRes.fetchNextPage();
     }
   }, [answerRes, inView]);
 
   const a = 1;
+
+  if (answerRes.isLoading) {
+    return <div>loading..</div>;
+  }
 
   return (
     <div>
@@ -50,6 +55,7 @@ const AnswerVideos = () => {
             views={v.views}
           />
         ))}
+        <div ref={ref} />
       </VideoContainer>
     </div>
   );
