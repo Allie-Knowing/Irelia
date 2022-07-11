@@ -1,41 +1,46 @@
-import { FC, useEffect, useState } from "react";
 import styled from "@emotion/styled";
 import { VideoItem } from "@views/myPage";
 import { useInfiniteQuery } from "react-query";
 import queryKey from "@constants/queryKey";
-import { getQuestionVideos } from "@apis/myPage";
-
-// interface VideosType {
-//   id: number;
-//   video_description: string;
-//   video_title: string;
-//   thumbnail: string;
-//   views: number;
-//   user_id: number;
-//   user_profile: string;
-//   is_adoption: number;
-//   video_url: string;
-//   created_at: string;
-//   comment_cnt: number;
-//   like_cnt: number;
-//   is_mine: boolean;
-//   is_like: boolean;
-// }
-
-// interface StateType {
-//   videos: VideosType[];
-// }
+import { getMyQuesionList } from "@apis/myPage";
+import { useInView } from "react-intersection-observer";
+import { useEffect, useMemo } from "react";
 
 const QuestionVideos = () => {
-  const res = useInfiniteQuery([queryKey.myQuestion], getQuestionVideos, {
-    getNextPageParam: (lastPage) => lastPage.data[0].id,
-  });
+  const questionRes = useInfiniteQuery(
+    [queryKey.myQuestion],
+    async ({ pageParam = 1 }) => {
+      const res = (await getMyQuesionList(pageParam, 10)).data.data;
+
+      return { page: pageParam, data: res };
+    },
+    {
+      getNextPageParam: (lastPage) => lastPage.page + 1,
+    },
+  );
+
+  const { ref, inView } = useInView();
+
+  const questionList = useMemo(
+    () => questionRes.data?.pages.flatMap((v) => v.data),
+    [questionRes.data?.pages],
+  );
 
   useEffect(() => {
-    console.log(res.data?.pages[0].data);
-  }, [res]);
+    if (inView) {
+      questionRes.fetchNextPage();
+    }
+  }, [inView, questionRes]);
 
   const a = 1;
+
+  if (questionRes.isLoading) {
+    return <div>loading..</div>;
+  }
+
+  if (questionRes.isError) {
+    return <div>Error.</div>;
+  }
 
   return (
     <div>
@@ -45,7 +50,7 @@ const QuestionVideos = () => {
         </Text>
       </Container>
       <VideoContainer>
-        {res.data?.pages[0].data.map((v) => (
+        {questionList?.map((v) => (
           <VideoItem
             key={v.id}
             thumbnail={v.thumbnail}
@@ -53,6 +58,7 @@ const QuestionVideos = () => {
             views={v.views}
           />
         ))}
+        <div ref={ref} />
       </VideoContainer>
     </div>
   );

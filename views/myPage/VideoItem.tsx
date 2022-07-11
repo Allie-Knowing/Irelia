@@ -16,11 +16,11 @@ const VideoItem: FC<PropsType> = ({ thumbnail, likeCnt, views }) => (
       <Outer>
         <Inner>
           <Image src={playIcon} alt="play icon" width={10} height={10} />
-          <Text>{likeCnt}</Text>
+          <Text>{views}</Text>
         </Inner>
         <Inner>
           <Image src={likeIcon} alt="like icon" width={12} height={10} />
-          <Text>{views}</Text>
+          <Text>{likeCnt}</Text>
         </Inner>
       </Outer>
     </VideoNavigation>

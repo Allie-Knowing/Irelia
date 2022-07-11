@@ -48,33 +48,54 @@ interface GetMyPageVideoResponse {
   data: VideoObject[];
 }
 
-export const getQuestionVideos = async ({ pageParam = 1 }) => {
-  const userId = await getUserId();
-  const res = await requestWithNoToken.get<GetMyPageVideoResponse>(
-    `${uri.questionVideos}/${userId.data.data}`,
+export const getMyQuesionList = async (page: number, size: number) => {
+  const userId = (await getUserId()).data.data;
+
+  return request.get<GetMyPageVideoResponse>(
+    `${uri.questionVideos}/${userId}`,
     {
       params: {
-        page: pageParam,
-        size: 6,
+        page,
+        size,
       },
     },
   );
-  return res.data;
 };
 
-export const getAnswerVideos = async ({ pageParam = 1 }) => {
-  const userId = await getUserId();
-  const res = await requestWithNoToken.get<GetMyPageVideoResponse>(
-    `${uri.answerVideos}/${userId.data.data}`,
-    {
-      params: {
-        page: pageParam,
-        size: 6,
-      },
+export const getUserQuesionList = async (
+  userId: number,
+  page: number,
+  size: number,
+) =>
+  request.get<GetMyPageVideoResponse>(`${uri.questionVideos}/${userId}`, {
+    params: {
+      page,
+      size,
     },
-  );
-  return res.data;
+  });
+
+export const getMyAnswerList = async (page: number, size: number) => {
+  const userId = (await getUserId()).data.data;
+
+  return request.get<GetMyPageVideoResponse>(`${uri.answerVideos}/${userId}`, {
+    params: {
+      page,
+      size,
+    },
+  });
 };
+
+export const getUserAnswerList = async (
+  userId: number,
+  page: number,
+  size: number,
+) =>
+  request.get<GetMyPageVideoResponse>(`${uri.answerVideos}/${userId}`, {
+    params: {
+      page,
+      size,
+    },
+  });
 
 interface GetFollowListResponse {
   id: number;

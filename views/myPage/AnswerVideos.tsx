@@ -1,36 +1,36 @@
-import { FC, useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import styled from "@emotion/styled";
 import { VideoItem } from "@views/myPage";
 import { useInfiniteQuery } from "react-query";
 import queryKey from "@constants/queryKey";
-import { getAnswerVideos } from "@apis/myPage";
-import { type } from "os";
-
-// interface VideosType {
-//   id: number;
-//   video_description: string;
-//   video_title: string;
-//   thumbnail: string;
-//   views: number;
-//   user_id: number;
-//   user_profile: string;
-//   is_adoption: number;
-//   video_url: string;
-//   created_at: string;
-//   comment_cnt: number;
-//   like_cnt: number;
-//   is_mine: boolean;
-//   is_like: boolean;
-// }
-
-// interface PropsType {
-//   videos: VideosType[];
-// }
+import { getMyAnswerList } from "@apis/myPage";
+import { useInView } from "react-intersection-observer";
 
 const AnswerVideos = () => {
-  const res = useInfiniteQuery([queryKey.myAnswer], getAnswerVideos, {
-    getNextPageParam: (lastPage) => lastPage.data.id,
-  });
+  const answerRes = useInfiniteQuery(
+    [queryKey.myAnswer],
+    async ({ pageParam = 1 }) => {
+      const res = (await getMyAnswerList(pageParam, 10)).data.data
+
+      return { page: pageParam, data: res };
+    },
+    {
+      getNextPageParam: (lastPage) => lastPage.page + 1,
+    },
+  );
+
+  const { ref, inView } = useInView();
+
+  const answerList = useMemo(
+    () => answerRes.data?.pages.flatMap((v) => v.data),
+    [answerRes.data?.pages],
+  );
+
+  useEffect(() => {
+    if (inView) {
+      answerRes.fetchNextPage();
+    }
+  }, [answerRes, inView]);
 
   const a = 1;
 
@@ -42,7 +42,7 @@ const AnswerVideos = () => {
         </Text>
       </Container>
       <VideoContainer>
-        {res.data?.pages[0].data.map((v) => (
+        {answerList?.map((v) => (
           <VideoItem
             key={v.id}
             thumbnail={v.thumbnail}

@@ -1,10 +1,8 @@
 import { ToggleButton, QuestionVideos, AnswerVideos } from "@views/myPage";
 import styled from "@emotion/styled";
-import { useEffect, useState } from "react";
-// import { useInView } from "react-intersection-observer";
+import { useState } from "react";
 
 const VideoLayoutContainer = () => {
-  // const { ref, inView } = useInView();
   const [isQuestion, setIsQuestion] = useState<boolean>(true);
 
   const onQuestion = () => {
@@ -14,12 +12,6 @@ const VideoLayoutContainer = () => {
   const onAnswer = () => {
     setIsQuestion(false);
   };
-
-  // useEffect(() => {
-  //   if (inView) {
-  //     questionRes.fetchNextPage();
-  //   }
-  // }, [inView, questionRes]);
 
   return (
     <Container>
