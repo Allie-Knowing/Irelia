@@ -1,6 +1,6 @@
 import { useEffect, useMemo } from "react";
 import styled from "@emotion/styled";
-import { VideoItem } from "@views/myPage";
+import { VideoItem, VideoItemSkeleton } from "@views/myPage";
 import { useInfiniteQuery } from "react-query";
 import queryKey from "@constants/queryKey";
 import { getMyAnswerList } from "@apis/myPage";
@@ -35,10 +35,6 @@ const AnswerVideos = () => {
 
   const a = 1;
 
-  if (answerRes.isLoading) {
-    return <div>loading..</div>;
-  }
-
   return (
     <div>
       <Container>
@@ -47,14 +43,18 @@ const AnswerVideos = () => {
         </Text>
       </Container>
       <VideoContainer>
-        {answerList?.map((v) => (
-          <VideoItem
-            key={v.id}
-            thumbnail={v.thumbnail}
-            likeCnt={v.like_cnt}
-            views={v.views}
-          />
-        ))}
+        {answerRes.isLoading
+          ? Array(6)
+            .fill(0)
+            .map((_, idx) => <VideoItemSkeleton key={idx} />)
+          : answerList?.map((v) => (
+            <VideoItem
+              key={v.id}
+              thumbnail={v.thumbnail}
+              likeCnt={v.like_cnt}
+              views={v.views}
+            />
+          ))}
         <div ref={ref} />
       </VideoContainer>
     </div>

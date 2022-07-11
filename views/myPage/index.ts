@@ -4,3 +4,4 @@ export { default as QuestionVideos } from "./QuestionVideos";
 export { default as AnswerVideos } from "./AnswerVideos";
 export { default as VideoItem } from "./VideoItem";
 export { default as UserInfoSkeleton } from "./UserInfoSkeleton";
+export { default as VideoItemSkeleton } from "./VIdeoItemSkeleton";

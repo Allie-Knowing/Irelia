@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { VideoItem } from "@views/myPage";
+import { VideoItem, VideoItemSkeleton } from "@views/myPage";
 import { useInfiniteQuery } from "react-query";
 import queryKey from "@constants/queryKey";
 import { getMyQuesionList } from "@apis/myPage";
@@ -35,10 +35,6 @@ const QuestionVideos = () => {
 
   const a = 1;
 
-  if (questionRes.isLoading) {
-    return <div>loading..</div>;
-  }
-
   return (
     <div>
       <Container>
@@ -47,14 +43,18 @@ const QuestionVideos = () => {
         </Text>
       </Container>
       <VideoContainer>
-        {questionList?.map((v) => (
-          <VideoItem
-            key={v.id}
-            thumbnail={v.thumbnail}
-            likeCnt={v.like_cnt}
-            views={v.views}
-          />
-        ))}
+        {questionRes.isLoading
+          ? Array(6)
+            .fill(0)
+            .map((_, idx) => <VideoItemSkeleton key={idx} />)
+          : questionList?.map((v) => (
+            <VideoItem
+              key={v.id}
+              thumbnail={v.thumbnail}
+              likeCnt={v.like_cnt}
+              views={v.views}
+            />
+          ))}
         <div ref={ref} />
       </VideoContainer>
     </div>
