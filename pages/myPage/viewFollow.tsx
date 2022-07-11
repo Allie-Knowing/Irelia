@@ -11,10 +11,6 @@ const ViewFollowContainer: FC = () => {
 
   const [isFollower, setIsFollower] = useState<boolean>(true);
 
-  if (res1.isLoading || res1.isLoading) {
-    return <UserItemSkeleton />;
-  }
-
   if (res1.isError || res2.isError) {
     return <div>error</div>;
   }
@@ -43,7 +39,8 @@ const ViewFollowContainer: FC = () => {
         initalName="follower-list"
       />
       <UserItems>
-        {whatsSelected()?.map((ele) => (
+        {res1.isLoading && <UserItemSkeleton />}
+        {res1.isSuccess && whatsSelected()?.map((ele) => (
           <UserItem key={ele.id} profile={ele.profile} name={ele.name} />
         ))}
       </UserItems>
