@@ -4,19 +4,11 @@ import styled from "@emotion/styled";
 import { useTheme } from "@emotion/react";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import { useQuery } from "react-query";
+import { useMutation } from "react-query";
 import queryKey from "@constants/queryKey";
 import { WithdrawalMember } from "@apis/myPage";
 
 const SetUpContainer: FC = () => {
-  const { isLoading, isError, refetch } = useQuery(
-    [queryKey.withdrawal],
-    WithdrawalMember,
-    {
-      enabled: false,
-    },
-  );
-
   const theme = useTheme();
   const router = useRouter();
 
@@ -24,10 +16,14 @@ const SetUpContainer: FC = () => {
   const onEditInterests = () => {
     router.push("/editInterests");
   };
-  // const onContact = () => { };
+  const onContact = () => { };
   const onLogout = () => { }; // 토큰 지우고 메인으로.;
   const onWithdrawal = () => {
-    refetch();
+    const { isLoading, isError } = useMutation(
+      [queryKey.withdrawal],
+      WithdrawalMember,
+    );
+    // 모달이 떠야할거같은디?
   };
 
   return (

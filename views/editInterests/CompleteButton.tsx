@@ -5,11 +5,15 @@ interface PropsType {
   buttonActive: boolean;
 }
 
-const CompleteButton: FC<PropsType> = ({ buttonActive }) => (
-  <Container buttonActive={buttonActive} disabled={!buttonActive}>
-    <Text>버튼</Text>
-  </Container>
-);
+const CompleteButton: FC<PropsType> = ({ buttonActive }) => {
+  const 
+  
+  return (
+    <Container buttonActive={buttonActive} disabled={!buttonActive}>
+      <Text>버튼</Text>
+    </Container>
+  )
+};
 
 export default CompleteButton;
 
@@ -20,9 +24,9 @@ const Container = styled.button<{ buttonActive: boolean }>`
   align-items: center;
   margin-top: 50px;
   background-color: ${(props) =>
-    (props.buttonActive
-      ? props.theme.colors.primary.default
-      : props.theme.colors.grayscale.scale20)};
+  (props.buttonActive
+    ? props.theme.colors.primary.default
+    : props.theme.colors.grayscale.scale20)};
 `;
 
 const Text = styled.p`

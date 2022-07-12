@@ -27,7 +27,7 @@ const ContentsItem: FC<PropsType> = ({
         {selectCount > 0 && <SelectNumber>{selectCount}</SelectNumber>}
       </Circle>
     ) : (
-      <Donut />
+      <DonutCircle />
     )}
     {isSelect && <Border />}
   </Container>
@@ -42,7 +42,7 @@ const Container = styled.div<{ isSelect: boolean }>`
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 8px;
+  border-radius: 10px;
   box-sizing: content;
 `;
 
@@ -53,7 +53,7 @@ const Border = styled.div`
   top: 0px;
   left: 0px;
   border: 3px solid ${({ theme }) => theme.colors.primary.default};
-  border-radius: 10px;
+  border-radius: 8px;
 `;
 
 const Item = styled(Image)`
@@ -69,7 +69,7 @@ const Name = styled.p`
   z-index: 2;
 `;
 
-const Donut = styled.div`
+const DonutCircle = styled.div`
   border: 2px solid ${({ theme }) => theme.colors.background};
   border-radius: 100px;
   height: 24px;

@@ -6,7 +6,7 @@ const enum uri {
   answerVideos = "/user/answer/video",
   follwerList = "/follower",
   followingList = "/following",
-  Withdrawal = "/user"
+  withdrawal = "/user"
 }
 
 export default uri;
