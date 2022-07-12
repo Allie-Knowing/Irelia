@@ -4,18 +4,31 @@ import styled from "@emotion/styled";
 import { useTheme } from "@emotion/react";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import { useQuery } from "react-query";
+import queryKey from "@constants/queryKey";
+import { WithdrawalMember } from "@apis/myPage";
 
 const SetUpContainer: FC = () => {
+  const { isLoading, isError, refetch } = useQuery(
+    [queryKey.withdrawal],
+    WithdrawalMember,
+    {
+      enabled: false,
+    },
+  );
+
   const theme = useTheme();
   const router = useRouter();
 
-  const editProfile = () => { };
-  const editInterests = () => {
+  const onEditProfile = () => { };
+  const onEditInterests = () => {
     router.push("/editInterests");
   };
-  const contact = () => { };
-  const logout = () => { };
-  const withdrawal = () => { };
+  // const onContact = () => { };
+  const onLogout = () => { }; // 토큰 지우고 메인으로.;
+  const onWithdrawal = () => {
+    refetch();
+  };
 
   return (
     <Container>
@@ -23,31 +36,31 @@ const SetUpContainer: FC = () => {
         <SetUpItem
           text="프로필 수정"
           color={theme.colors.grayscale.scale100}
-          onClickFunction={editProfile}
+          onClickFunction={onEditProfile}
         />
         <SetUpItem
           text="관심분야 수정"
           color={theme.colors.grayscale.scale100}
-          onClickFunction={editInterests}
+          onClickFunction={onEditInterests}
         />
         <Link href="https://knowing.allie.kr/inquiry">
           <a>
             <SetUpItem
               text="문의하기"
               color={theme.colors.grayscale.scale100}
-              onClickFunction={contact}
+              onClickFunction={onContact}
             />
           </a>
         </Link>
         <SetUpItem
           text="로그아웃"
           color={theme.colors.red.default}
-          onClickFunction={logout}
+          onClickFunction={onLogout}
         />
         <SetUpItem
           text="회원탈퇴"
           color={theme.colors.red.default}
-          onClickFunction={withdrawal}
+          onClickFunction={onWithdrawal}
         />
       </Outer>
     </Container>

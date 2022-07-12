@@ -5,6 +5,7 @@ const enum queryKey {
   myAnswer = "my-answer",
   followerList = "follower-list",
   followingList = "following-list",
+  withdrawal = "withdrawal-member",
 }
 
 export default queryKey;

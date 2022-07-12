@@ -1,5 +1,5 @@
 import uri from "@constants/uri";
-import request, { requestWithNoToken } from "@utils/request";
+import request from "@utils/request";
 import { getUserId } from "@apis";
 
 interface GetUserInfoResponse {
@@ -13,19 +13,6 @@ interface GetUserInfoResponse {
     answer_video_cnt: number;
   };
 }
-
-export const getUserInfo = async (userId: number) => {
-  const res = await request.get<GetUserInfoResponse>(
-    `${uri.userInfo}/${userId}`,
-  );
-
-  return res.data;
-};
-
-export const getMyInfo = async () => {
-  const userId = await getUserId();
-  return getUserInfo(userId.data.data);
-};
 
 interface VideoObject {
   id: number;
@@ -47,6 +34,26 @@ interface VideoObject {
 interface GetMyPageVideoResponse {
   data: VideoObject[];
 }
+
+interface GetFollowListResponse {
+  id: number;
+  profile: string;
+  name: string;
+}
+
+
+export const getUserInfo = async (userId: number) => {
+  const res = await request.get<GetUserInfoResponse>(
+    `${uri.userInfo}/${userId}`,
+  );
+
+  return res.data;
+};
+
+export const getMyInfo = async () => {
+  const userId = await getUserId();
+  return getUserInfo(userId.data.data);
+};
 
 export const getMyQuesionList = async (page: number, size: number) => {
   const userId = (await getUserId()).data.data;
@@ -97,12 +104,6 @@ export const getUserAnswerList = async (
     },
   });
 
-interface GetFollowListResponse {
-  id: number;
-  profile: string;
-  name: string;
-}
-
 export const getFollowerList = async () => {
   const userId = await getUserId();
   const res = await request.get<GetFollowListResponse[]>(`${uri.follwerList}`, {
@@ -126,4 +127,10 @@ export const getFollowingList = async () => {
   );
 
   return res.data;
+};
+
+export const WithdrawalMember = async () => {
+  const res = await request.delete(`${uri.withdrawal}`);
+
+  return res;
 };

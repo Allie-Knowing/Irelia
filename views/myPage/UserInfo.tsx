@@ -1,4 +1,4 @@
-import { FC, useEffect } from "react";
+import { FC } from "react";
 import styled from "@emotion/styled";
 import ImageWithDefault from "@components/ImageWithDefault";
 import { useQuery } from "react-query";
@@ -9,10 +9,6 @@ import { UserInfoSkeleton } from "@views/myPage";
 const UserInfo: FC = () => {
   const { data, isLoading, isError } = useQuery([queryKey.myInfo], getMyInfo);
   const shortenData = data?.data;
-
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
 
   if (isLoading) {
     return <UserInfoSkeleton />;
