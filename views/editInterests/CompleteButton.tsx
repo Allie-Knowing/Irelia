@@ -1,18 +1,48 @@
+import { updateInterests } from "@apis/myPage";
 import styled from "@emotion/styled";
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
+import { useMutation } from "react-query";
+import INTERESTS_CATEGORIES from "@constants/interestCategory";
 
 interface PropsType {
   buttonActive: boolean;
+  names: string[];
 }
 
-const CompleteButton: FC<PropsType> = ({ buttonActive }) => {
-  const 
-  
+const CompleteButton: FC<PropsType> = ({ buttonActive, names }) => {
+  const useEditInterests = useMutation((interestsId: number[]) =>
+    updateInterests(interestsId));
+
+  const [interestsId, setInterestsId] = useState<number[]>([]);
+
+  useEffect(() => {
+    const a = INTERESTS_CATEGORIES.map((v) => {
+      if (names.includes(v.name)) {
+        return v.id;
+      }
+      return "";
+    });
+
+    setInterestsId(a.filter((v) => v !== ""));
+  }, [names]);
+
+  const onClick = () => {
+    useEditInterests.mutate(interestsId);
+  };
+
+  if (useEditInterests.isSuccess) {
+    alert("변경완료.");
+  }
+
   return (
-    <Container buttonActive={buttonActive} disabled={!buttonActive}>
+    <Container
+      buttonActive={buttonActive}
+      disabled={!buttonActive}
+      onClick={onClick}
+    >
       <Text>버튼</Text>
     </Container>
-  )
+  );
 };
 
 export default CompleteButton;

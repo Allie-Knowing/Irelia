@@ -1,19 +1,23 @@
 import styled from "@emotion/styled";
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, useEffect } from "react";
 import { ContentsItem } from "@views/editInterests";
 import INTERESTS_CATEGORIES from "@constants/interestCategory";
 
 interface PropsType {
   setButtonActive: React.Dispatch<React.SetStateAction<boolean>>;
+  names: string[];
+  setNames: React.Dispatch<React.SetStateAction<string[]>>;
 }
 
-const ContentsLayout: FC<PropsType> = ({ setButtonActive }) => {
-  const [names, setNames] = useState<string[]>([]);
-
+const ContentsLayout: FC<PropsType> = ({
+  setButtonActive,
+  names,
+  setNames,
+}) => {
   useEffect(() => {
     if (names.length >= 1) { setButtonActive(true); }
     else { setButtonActive(false); }
-  }, [names])
+  }, [names, setButtonActive]);
 
   const onClick = (index: number) => {
     const { name } = INTERESTS_CATEGORIES[index];

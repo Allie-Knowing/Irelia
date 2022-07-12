@@ -41,7 +41,6 @@ interface GetFollowListResponse {
   name: string;
 }
 
-
 export const getUserInfo = async (userId: number) => {
   const res = await request.get<GetUserInfoResponse>(
     `${uri.userInfo}/${userId}`,
@@ -129,8 +128,16 @@ export const getFollowingList = async () => {
   return res.data;
 };
 
-export const WithdrawalMember = async () => {
+export const withdrawalMember = async () => {
   const res = await request.delete(`${uri.withdrawal}`);
+
+  return res;
+};
+
+export const updateInterests = async (interestCategories: number[]) => {
+  const res = await request.post(`${uri.editInterest}`, {
+    interest_categories: interestCategories,
+  });
 
   return res;
 };

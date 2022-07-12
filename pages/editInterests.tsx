@@ -4,13 +4,18 @@ import { useState } from "react";
 
 const EditInterestsContainer = () => {
   const [buttonActive, setButtonActive] = useState<boolean>(false);
+  const [names, setNames] = useState<string[]>([]);
 
   return (
     <Container>
       <P1>관심있는 컨텐츠를 선택해보세요</P1>
       <P2>최대 3개까지 선택할 수 있어요</P2>
-      <ContentsLayout setButtonActive={setButtonActive} />
-      <CompleteButton buttonActive={buttonActive} />
+      <ContentsLayout
+        names={names}
+        setNames={setNames}
+        setButtonActive={setButtonActive}
+      />
+      <CompleteButton buttonActive={buttonActive} names={names} />
     </Container>
   );
 };

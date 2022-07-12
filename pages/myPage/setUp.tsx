@@ -5,10 +5,11 @@ import { useTheme } from "@emotion/react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { useMutation } from "react-query";
-import queryKey from "@constants/queryKey";
-import { WithdrawalMember } from "@apis/myPage";
+import { withdrawalMember } from "@apis/myPage";
 
 const SetUpContainer: FC = () => {
+  const useWithdrawalMember = useMutation(() => withdrawalMember());
+
   const theme = useTheme();
   const router = useRouter();
 
@@ -19,11 +20,7 @@ const SetUpContainer: FC = () => {
   const onContact = () => { };
   const onLogout = () => { }; // 토큰 지우고 메인으로.;
   const onWithdrawal = () => {
-    const { isLoading, isError } = useMutation(
-      [queryKey.withdrawal],
-      WithdrawalMember,
-    );
-    // 모달이 떠야할거같은디?
+    useWithdrawalMember.mutate();
   };
 
   return (
