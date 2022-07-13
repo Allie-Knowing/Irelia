@@ -13,4 +13,5 @@ const Container = styled.div`
   aspect-ratio: 75 / 133;
   position: relative;
   background-color: ${({ theme }) => theme.colors.grayscale.scale50};
+  border-radius: 10px;
 `;

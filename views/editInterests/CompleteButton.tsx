@@ -31,7 +31,6 @@ const CompleteButton: FC<PropsType> = ({ buttonActive, names }) => {
   };
 
   if (useEditInterests.isSuccess) {
-    alert("변경완료.");
   }
 
   return (
@@ -40,7 +39,7 @@ const CompleteButton: FC<PropsType> = ({ buttonActive, names }) => {
       disabled={!buttonActive}
       onClick={onClick}
     >
-      <Text>버튼</Text>
+      <Text>완료</Text>
     </Container>
   );
 };
@@ -53,6 +52,7 @@ const Container = styled.button<{ buttonActive: boolean }>`
   justify-content: center;
   align-items: center;
   margin-top: 50px;
+  border-radius: 5px;
   background-color: ${(props) =>
   (props.buttonActive
     ? props.theme.colors.primary.default

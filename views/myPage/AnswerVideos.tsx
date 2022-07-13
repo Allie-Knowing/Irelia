@@ -44,7 +44,7 @@ const AnswerVideos = () => {
       </Container>
       <VideoContainer>
         {answerRes.isLoading
-          ? Array(6)
+          ? Array(3)
             .fill(0)
             .map((_, idx) => <VideoItemSkeleton key={idx} />)
           : answerList?.map((v) => (

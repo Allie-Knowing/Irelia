@@ -42,7 +42,6 @@ const Container = styled.div<{ isSelect: boolean }>`
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 10px;
   box-sizing: content;
 `;
 
@@ -60,6 +59,7 @@ const Item = styled(Image)`
   object-fit: cover;
   position: relative;
   z-index: -1;
+  border-radius: 8px;
 `;
 
 const Name = styled.p`
@@ -95,4 +95,5 @@ const Circle = styled.div`
 const SelectNumber = styled.p`
   position: absolute;
   font-size: 12px;
+  color: ${({ theme }) => theme.colors.grayscale.scale10};
 `;
