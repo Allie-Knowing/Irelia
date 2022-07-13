@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
 import { VideoItem, VideoItemSkeleton } from "@views/myPage";
-import { useInfiniteQuery } from "react-query";
+import { useInfiniteQuery, useQuery } from "react-query";
 import queryKey from "@constants/queryKey";
-import { getMyQuesionList } from "@apis/myPage";
+import { getMyQuesionList, getNumOfQuestions } from "@apis/myPage";
 import { useInView } from "react-intersection-observer";
 import { useEffect, useMemo } from "react";
 
@@ -19,6 +19,8 @@ const QuestionVideos = () => {
       retry: 0,
     },
   );
+
+  const { data } = useQuery([queryKey.numOfQuestion], getNumOfQuestions);
 
   const { ref, inView } = useInView();
 
@@ -38,9 +40,7 @@ const QuestionVideos = () => {
   return (
     <div>
       <Container>
-        <Text>
-          내가 올린 질문 {a}개
-        </Text>
+        <Text>내가 올린 질문 {data?.data.data}개</Text>
       </Container>
       <VideoContainer>
         {questionRes.isLoading

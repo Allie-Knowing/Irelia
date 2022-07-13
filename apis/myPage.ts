@@ -41,6 +41,12 @@ interface GetFollowListResponse {
   name: string;
 }
 
+interface GetVideoCountResponse {
+  data: {
+    data: number;
+  }
+}
+
 export const getUserInfo = async (userId: number) => {
   const res = await request.get<GetUserInfoResponse>(
     `${uri.userInfo}/${userId}`,
@@ -102,6 +108,16 @@ export const getUserAnswerList = async (
       size,
     },
   });
+
+export const getNumOfQuestions = async () => {
+  const userId = (await getUserId()).data.data;
+  return request.get<GetVideoCountResponse>(`${uri.questionCount}/${userId}`);
+};
+
+export const getNumOfAnswers = async () => {
+  const userId = (await getUserId()).data.data;
+  return request.get<GetVideoCountResponse>(`${uri.answerCount}/${userId}`);
+};
 
 export const getFollowerList = async () => {
   const userId = await getUserId();

@@ -4,6 +4,8 @@ const enum uri {
   userId = "/user/my",
   questionVideos = "/user/question/video",
   answerVideos = "/user/answer/video",
+  questionCount = "/user/question/count",
+  answerCount = "/user/answer/count",
   follwerList = "/follower",
   followingList = "/following",
   withdrawal = "/user",
