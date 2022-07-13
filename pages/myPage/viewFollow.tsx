@@ -1,9 +1,10 @@
 import { FC, useState } from "react";
 import styled from "@emotion/styled";
 import { UserItem, SelectButton, UserItemSkeleton } from "@views/viewFollow";
-import { useQuery } from "react-query";
+import { dehydrate, QueryClient, useQuery } from "react-query";
 import queryKey from "@constants/queryKey";
 import { getFollowerList, getFollowingList } from "@apis/myPage";
+import { GetServerSideProps } from "next";
 
 const ViewFollowContainer: FC = () => {
   const res1 = useQuery([queryKey.followerList], getFollowerList);
@@ -46,6 +47,19 @@ const ViewFollowContainer: FC = () => {
       </UserItems>
     </Container>
   );
+};
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const queryClient = new QueryClient();
+
+  await queryClient.prefetchQuery([queryKey.followerList], getFollowerList);
+  await queryClient.prefetchQuery([queryKey.followingList], getFollowingList);
+
+  return {
+    props: {
+      dehydratedState: dehydrate(queryClient),
+    },
+  };
 };
 
 export default ViewFollowContainer;
