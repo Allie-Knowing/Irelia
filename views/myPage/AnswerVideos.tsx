@@ -35,13 +35,11 @@ const AnswerVideos = () => {
     }
   }, [answerRes, inView]);
 
-  const a = 1;
-
   return (
     <div>
       <Container>
         <Text>
-          내가 올린 답변 {data?.data.data   }개
+          내가 올린 답변 {data?.data.data}개
         </Text>
       </Container>
       <VideoContainer>

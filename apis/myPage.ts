@@ -60,7 +60,7 @@ export const getMyInfo = async () => {
   return getUserInfo(userId.data.data);
 };
 
-export const getMyQuesionList = async (page: number, size: number) => {
+export const getMyQuesionList = async (page: number = 1, size: number = 10) => {
   const userId = (await getUserId()).data.data;
 
   return request.get<GetMyPageVideoResponse>(

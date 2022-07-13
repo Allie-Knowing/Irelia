@@ -35,8 +35,6 @@ const QuestionVideos = () => {
     }
   }, [inView, questionRes]);
 
-  const a = 1;
-
   return (
     <div>
       <Container>
